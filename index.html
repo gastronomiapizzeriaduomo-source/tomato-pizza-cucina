@@ -14,11 +14,6 @@
             --tomato-beige: #f3eadd;
             --tomato-green: #006768;
 
-            --accent-rose: #f7bbb2;
-            --accent-lime: #c5d984;
-            --accent-blue: #6a77b8;
-            --accent-pink: #ed8eba;
-
             --bg-page: #faf7f3;
             --text-main: #111111;
         }
@@ -33,7 +28,6 @@
         }
 
         img { max-width: 100%; display: block; }
-
         a { text-decoration: none; color: inherit; }
 
         /* HEADER */
@@ -55,7 +49,7 @@
             justify-content: space-between;
         }
 
-        /* LOGO TOMATO ricreato */
+        /* LOGO TOMATO */
         .logo-mark {
             display: flex;
             align-items: center;
@@ -95,6 +89,7 @@
             opacity: 0.8;
         }
 
+        /* NAV */
         nav ul {
             list-style: none;
             display: flex;
@@ -171,7 +166,7 @@
 
         .dropdown a:hover { background: #f3eadd; }
 
-        /* LAYOUT SECTIONS */
+        /* SEZIONI BASE */
         main { padding-bottom: 3rem; }
 
         section {
@@ -256,36 +251,28 @@
             object-fit: cover;
         }
 
-        /* MENU SEMPLICE */
-        .menu-box {
-            margin-top: 2rem;
-            max-width: 460px;
-            background: #fff;
-            border-radius: 20px;
-            padding: 1.6rem 1.7rem;
-            box-shadow: 0 18px 32px rgba(0,0,0,0.06);
+        /* MENU TESTUALE */
+        .menu-columns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
+            margin-top: 1.8rem;
         }
 
-        .menu-box label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: rgba(0,0,0,0.6);
+        .menu-block-title {
+            font-weight: 700;
+            margin-bottom: 0.6rem;
         }
 
-        .menu-box select {
-            margin-top: 0.4rem;
-            width: 100%;
-            padding: 0.7rem 0.9rem;
-            border-radius: 999px;
-            border: 1px solid rgba(0,0,0,0.16);
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
             font-size: 0.9rem;
-            background: #fff;
+            margin-bottom: 0.3rem;
         }
 
-        .menu-detail-title { font-weight: 700; margin-top: 1rem; }
-        .menu-detail-desc { font-size: 0.86rem; margin-top: 0.35rem; opacity: 0.9; }
-        .menu-detail-price { margin-top: 0.5rem; font-size: 0.9rem; font-weight: 700; color: var(--tomato-red); }
+        .menu-item-name { font-weight: 500; }
+        .menu-item-price { font-weight: 600; }
 
         /* RECENSIONI */
         .reviews-wrapper {
@@ -335,7 +322,8 @@
                 padding-top: 3.2rem;
             }
             .hero-visual { order: -1; }
-            nav ul { display: none; } /* desktop menu hidden on mobile (si può aggiungere burger in futuro) */
+            nav ul { display: none; } /* mobile: per ora niente burger */
+            .menu-columns { grid-template-columns: 1fr; }
             .reviews-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -353,19 +341,21 @@
             </div>
         </div>
 
-        <!-- Menu con tendina -->
+        <!-- Menu con “MENU” a tendina -->
         <nav>
             <ul>
                 <li><a href="#storia">Storia</a></li>
-                <li><a href="#menu">Menu</a></li>
+
                 <li class="has-dropdown">
-                    <a href="#pizza">Pizza &amp; Cucina</a>
+                    <a href="#menu">Menu</a>
                     <ul class="dropdown">
-                        <li><a href="#pizza">Le nostre pizze</a></li>
-                        <li><a href="#contatti">Asporto / Delivery</a></li>
-                        <li><a href="#contatti">Prenota un tavolo</a></li>
+                        <li><a href="#menu">Pizza</a></li>
+                        <li><a href="#menu">Cucina</a></li>
+                        <li><a href="#menu">Dolci</a></li>
+                        <li><a href="#menu">Bevande</a></li>
                     </ul>
                 </li>
+
                 <li><a href="#recensioni">Recensioni</a></li>
                 <li><a href="#contatti" class="nav-cta">Prenota / Ordina</a></li>
             </ul>
@@ -382,9 +372,9 @@
                 Sapori che raccontano il territorio, <span>ogni morso una storia.</span>
             </h1>
             <p class="hero-subtitle">
-                TOMATO nasce dall’idea di portare in tavola una pizza leggera, fatta con ingredienti del territorio 
-                e un impasto a lunga lievitazione. Un posto semplice, dove sentirsi a casa, tra profumo di forno 
-                e piatti di cucina che cambiano con le stagioni.
+                TOMATO nasce dall’idea di portare in tavola una pizza leggera, fatta con ingredienti del territorio
+                e un impasto a lunga lievitazione. Un locale semplice, accogliente, dove fermarsi per una pizza,
+                un piatto di cucina o un bicchiere in compagnia.
             </p>
             <div class="hero-cta-row">
                 <button class="btn-primary" onclick="window.open('https://wa.me/393489291264?text=Ciao%2C%20vorrei%20prenotare%20da%20TOMATO','_blank')">
@@ -394,48 +384,37 @@
             </div>
         </div>
         <div class="hero-visual">
-            <!-- Sostituisci con tua foto -->
+            <!-- Sostituisci con una tua foto -->
             <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1400&q=80" alt="Pizza TOMATO">
         </div>
     </section>
 
-    <!-- MENU PIZZA SEMPLICE -->
-    <section id="pizza">
-        <div class="section-label">PIZZA</div>
-        <h2 class="section-title">Scegli la pizza che parla di te.</h2>
+    <!-- MENU GENERALE (testo, niente lista pizze dettagliata) -->
+    <section id="menu">
+        <div class="section-label">MENU</div>
+        <h2 class="section-title">Pizza, cucina, dolci e bevande.</h2>
         <p class="body-copy">
-            Un menu essenziale, dove ogni combinazione nasce per valorizzare ingredienti e territorio. 
-            Seleziona una pizza per scoprire cosa c’è nel piatto.
+            Un menu corto e curato, che cambia quando cambiano le stagioni. La base è sempre la stessa:
+            impasto leggero, ingredienti scelti e piatti pensati per stare bene a tavola, senza complicazioni.
         </p>
 
-        <div class="menu-box">
-            <label for="pizzaSelect">Le nostre pizze</label>
-            <select id="pizzaSelect">
-                <option value="duomo">Duomo</option>
-                <option value="vegetariana">Vegetariana</option>
-                <option value="delicata">Delicata</option>
-                <option value="tirolo">Tirolo</option>
-            </select>
-
-            <div class="menu-detail">
-                <div class="menu-detail-title" id="pizzaName">Duomo</div>
-                <div class="menu-detail-desc" id="pizzaDesc">
-                    Pomodoro, mozzarella, radicchio, salsiccia, gorgonzola: sapori intensi per chi ama il carattere del territorio.
-                </div>
-                <div class="menu-detail-price" id="pizzaPrice">€9,70</div>
+        <div class="menu-columns">
+            <div>
+                <div class="menu-block-title">Pizza</div>
+                <p class="body-copy" style="font-size:0.9rem;">
+                    Margherita, classici di sempre e pizze di territorio con radicchio, salsiccia, verdure
+                    e formaggi selezionati. Ogni pizza è disponibile anche con richieste particolari
+                    (quando possibile).
+                </p>
+            </div>
+            <div>
+                <div class="menu-block-title">Cucina, dolci e bevande</div>
+                <p class="body-copy" style="font-size:0.9rem;">
+                    Una piccola carta di cucina con piatti caldi, insalate e proposte del giorno,
+                    dolci semplici e una selezione di birre, vini e bevande pensate per accompagnare la pizza.
+                </p>
             </div>
         </div>
-    </section>
-
-    <!-- SEZIONE MENU CUCINA (testo semplice) -->
-    <section id="menu">
-        <div class="section-label">CUCINA</div>
-        <h2 class="section-title">Piatti di cucina che cambiano con le stagioni.</h2>
-        <p class="body-copy">
-            Oltre alla pizza, TOMATO propone una piccola selezione di piatti caldi, insalate e proposte del giorno 
-            pensate per accompagnare l’impasto e condividere il tavolo. Un menu corto, aggiornato spesso, 
-            che segue disponibilità e stagionalità.
-        </p>
     </section>
 
     <!-- RECENSIONI CLIENTI -->
@@ -446,19 +425,19 @@
             <div class="reviews-grid">
                 <div>
                     <p class="body-copy">
-                        La cosa più bella per TOMATO è leggere le vostre parole: chi parla di impasto leggero, 
-                        chi della crosta croccante, chi dell’accoglienza e del sorriso quando entra in locale.
+                        Le parole più importanti sono le vostre: chi parla dell’impasto leggero,
+                        chi del profumo appena si entra, chi della cordialità in sala.
                     </p>
                     <p class="body-copy" style="margin-top:0.8rem;">
-                        Qui sotto puoi vedere le recensioni aggiornate direttamente da Google: 
-                        nessun filtro, solo l’esperienza reale di chi è passato da noi.
+                        In questa sezione puoi vedere le recensioni aggiornate dal profilo Google di TOMATO:
+                        niente filtri, solo l’esperienza reale di chi si è seduto ai nostri tavoli.
                     </p>
                 </div>
                 <div class="reviews-placeholder">
-                    <!-- QUI ANDRÀ IL WIDGET GOOGLE REVIEWS -->
+                    <!-- QUI INCOLLI IL WIDGET GOOGLE REVIEWS -->
                     Incolla qui il codice del widget Google Reviews<br>
-                    (es. Elfsight, Taggbox, EmbedSocial).<br>
-                    Otterrai le recensioni in tempo reale dal tuo profilo Google Business.
+                    (Elfsight, Taggbox, EmbedSocial, ecc.).<br>
+                    Verranno mostrate le recensioni in tempo reale dal tuo profilo Google Business.
                 </div>
             </div>
         </div>
@@ -469,7 +448,7 @@
         <div class="section-label">CONTATTI</div>
         <h2 class="section-title">Prenota o ordina da TOMATO.</h2>
         <p class="body-copy">
-            Vuoi un tavolo per stasera, un asporto veloce o qualche informazione in più sul menu? 
+            Vuoi un tavolo per stasera, un asporto veloce o qualche informazione in più sul menu?
             Scrivici su WhatsApp o chiamaci direttamente: ti rispondiamo noi.
         </p>
 
@@ -479,7 +458,7 @@
             </button>
             <p class="hero-note" style="margin-top:0.7rem;">
                 Telefono: <a href="tel:3489291264">348 9291264</a><br>
-                Inserisci qui sotto la mappa Google del locale per farti trovare subito.
+                Qui sotto puoi inserire la mappa Google del locale per farti trovare subito.
             </p>
         </div>
     </section>
@@ -489,44 +468,6 @@
     <span>&copy; 2026 TOMATO – Pizza &amp; Cucina. Tutti i diritti riservati.</span>
     <span>Identità ispirata al manuale di brand TOMATO.</span>
 </footer>
-
-<script>
-    // logica semplice menu pizza
-    const pizzaSelect = document.getElementById('pizzaSelect');
-    const pizzaName   = document.getElementById('pizzaName');
-    const pizzaDesc   = document.getElementById('pizzaDesc');
-    const pizzaPrice  = document.getElementById('pizzaPrice');
-
-    const pizze = {
-        duomo: {
-            nome: 'Duomo',
-            desc: 'Pomodoro, mozzarella, radicchio, salsiccia, gorgonzola: sapori intensi per chi ama il carattere del territorio.',
-            prezzo: '€9,70'
-        },
-        vegetariana: {
-            nome: 'Vegetariana',
-            desc: 'Pomodoro, mozzarella, radicchio, melanzane, zucchine, peperoncino: la terra nel piatto, senza rinunciare al gusto.',
-            prezzo: '€10,70'
-        },
-        delicata: {
-            nome: 'Delicata',
-            desc: 'Pomodoro, mozzarella, zucchine grigliate, stracchino, prosciutto cotto: morbida, avvolgente, perfetta per chi cerca equilibrio.',
-            prezzo: '€10,70'
-        },
-        tirolo: {
-            nome: 'Tirolo',
-            desc: 'Pomodoro, mozzarella, fontina, funghi, speck: un viaggio tra montagna e forno a legna.',
-            prezzo: '€10,50'
-        }
-    };
-
-    pizzaSelect.addEventListener('change', () => {
-        const p = pizze[pizzaSelect.value];
-        pizzaName.textContent  = p.nome;
-        pizzaDesc.textContent  = p.desc;
-        pizzaPrice.textContent = p.prezzo;
-    });
-</script>
 
 </body>
 </html>
