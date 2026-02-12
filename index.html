@@ -352,14 +352,7 @@
         .color-alt-3 { background: var(--tomato-blue); color: #fff; }
         .color-alt-4 { background: var(--tomato-pink); }
 
-        /* PIZZA & CUCINA GRID */
-        .cards-3 {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1.75rem;
-            margin-top: 2.25rem;
-        }
-
+        /* CARD BASE (usata anche per dettaglio pizza) */
         .card {
             background: #fff;
             border-radius: 20px;
@@ -469,9 +462,6 @@
                 order: -1;
             }
             .section-grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .cards-3 {
                 grid-template-columns: 1fr;
             }
             .color-row-main,
@@ -639,48 +629,41 @@
         </div>
 
         <p class="mute-text" style="margin-top: 0.5rem;">
-            Font suggeriti: titoli serif (simile IvyPresto), testi e interfaccia sans serif contemporanea (simile Satoshi). [file:52]
+            Font suggeriti: titoli serif (simile IvyPresto), testi e interfaccia sans serif contemporanea (simile Satoshi).
         </p>
     </section>
 
-    <!-- PIZZA & CUCINA -->
+    <!-- PIZZA & CUCINA CON MENU A TENDINA -->
     <section id="menu">
         <div class="section-label">PIZZA &amp; CUCINA</div>
         <h2 class="section-title">Una selezione di pizze che parlano di te.</h2>
         <p class="body-copy">
-            Dal grande classico alla pizza di territorio, ogni combinazione è pensata per esaltare 
-            ingredienti e stagioni, mantenendo leggerezza, digeribilità e gusto.
+            Seleziona una pizza dal menu a tendina per scoprire gli ingredienti e il prezzo.
         </p>
 
-        <div class="cards-3">
+        <!-- MENU A TENDINA -->
+        <div style="margin-top: 1.8rem; max-width: 420px;">
+            <label for="pizzaSelect" style="font-size:0.85rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:rgba(0,0,0,0.6);">
+                Scegli la tua pizza
+            </label>
+            <select id="pizzaSelect" style="margin-top:0.4rem; width:100%; padding:0.7rem 0.9rem; border-radius:999px; border:1px solid rgba(0,0,0,0.16); font-size:0.9rem;">
+                <option value="duomo">Duomo</option>
+                <option value="vegetariana">Vegetariana</option>
+                <option value="delicata">Delicata</option>
+                <option value="tirolo">Tirolo</option>
+            </select>
+        </div>
+
+        <!-- DETTAGLIO PIZZA SELEZIONATA -->
+        <div id="pizzaDetail" style="margin-top: 2rem;">
             <article class="card">
                 <div class="card-tag">Pizza del territorio</div>
-                <div class="card-title">Duomo</div>
-                <p class="card-body">
+                <div class="card-title" id="pizzaName">Duomo</div>
+                <p class="card-body" id="pizzaDesc">
                     Pomodoro, mozzarella, radicchio, salsiccia, gorgonzola: un omaggio ai sapori intensi 
                     e alle sere d’inverno.
                 </p>
-                <div class="card-price">€9,70</div>
-            </article>
-
-            <article class="card">
-                <div class="card-tag">Vegetariana</div>
-                <div class="card-title">Vegetariana</div>
-                <p class="card-body">
-                    Pomodoro, mozzarella, radicchio, melanzane, zucchine, peperoncino: la terra nel piatto, 
-                    senza rinunciare al carattere.
-                </p>
-                <div class="card-price">€10,70</div>
-            </article>
-
-            <article class="card">
-                <div class="card-tag">Speciale</div>
-                <div class="card-title">Delicata</div>
-                <p class="card-body">
-                    Pomodoro, mozzarella, zucchine grigliate, stracchino, prosciutto cotto: una pizza morbida, 
-                    avvolgente, perfetta per chi cerca equilibrio.
-                </p>
-                <div class="card-price">€10,70</div>
+                <div class="card-price" id="pizzaPrice">€9,70</div>
             </article>
         </div>
     </section>
@@ -724,8 +707,53 @@
 
 <footer>
     <span>&copy; 2026 TOMATO – Pizza &amp; Cucina. Tutti i diritti riservati.</span>
-    <span>Branding ispirato alle linee guida ufficiali TOMATO. [file:52]</span>
+    <span>Branding ispirato alle linee guida ufficiali TOMATO.</span>
 </footer>
+
+<script>
+    const pizzaSelect = document.getElementById('pizzaSelect');
+    const pizzaName   = document.getElementById('pizzaName');
+    const pizzaDesc   = document.getElementById('pizzaDesc');
+    const pizzaPrice  = document.getElementById('pizzaPrice');
+    const cardTag     = document.querySelector('#pizzaDetail .card-tag');
+
+    const pizze = {
+        duomo: {
+            nome: 'Duomo',
+            tag: 'Pizza del territorio',
+            desc: 'Pomodoro, mozzarella, radicchio, salsiccia, gorgonzola: un omaggio ai sapori intensi e alle sere d’inverno.',
+            prezzo: '€9,70'
+        },
+        vegetariana: {
+            nome: 'Vegetariana',
+            tag: 'Vegetariana',
+            desc: 'Pomodoro, mozzarella, radicchio, melanzane, zucchine, peperoncino: la terra nel piatto, senza rinunciare al carattere.',
+            prezzo: '€10,70'
+        },
+        delicata: {
+            nome: 'Delicata',
+            tag: 'Speciale',
+            desc: 'Pomodoro, mozzarella, zucchine grigliate, stracchino, prosciutto cotto: una pizza morbida, avvolgente, perfetta per chi cerca equilibrio.',
+            prezzo: '€10,70'
+        },
+        tirolo: {
+            nome: 'Tirolo',
+            tag: 'Pizza speciale',
+            desc: 'Pomodoro, mozzarella, fontina, funghi, speck: un viaggio tra montagna e forno a legna.',
+            prezzo: '€10,50'
+        }
+    };
+
+    pizzaSelect.addEventListener('change', () => {
+        const value = pizzaSelect.value;
+        const p = pizze[value];
+
+        pizzaName.textContent  = p.nome;
+        pizzaDesc.textContent  = p.desc;
+        pizzaPrice.textContent = p.prezzo;
+        cardTag.textContent    = p.tag;
+    });
+</script>
 
 </body>
 </html>
