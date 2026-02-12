@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato Pizza e Cucina - Pizzeria Vicino a Te</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; }
+        header { background: #ff6b35; color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        nav h1 { font-size: 1.8em; }
+        nav ul { display: flex; list-style: none; }
+        nav li { margin-left: 2rem; }
+        nav a { color: white; text-decoration: none; font-weight: 600; }
+        .hero { background: url('https://via.placeholder.com/1920x800/ff6b35/ffffff?text=Pizza+Fresca') center/cover; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); padding: 0 2rem; margin-top: 60px; }
+        .hero h2 { font-size: 3.5em; margin-bottom: 1rem; animation: fadeInUp 1s ease; }
+        .hero p { font-size: 1.5em; margin-bottom: 2rem; }
+        .cta { background: #ff4757; color: white; padding: 1.2rem 3rem; border: none; border-radius: 50px; font-size: 1.2em; cursor: pointer; transition: all 0.3s; font-weight: 600; }
+        .cta:hover { transform: scale(1.05); background: #ff3742; }
+        section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        h3 { font-size: 2.5em; text-align: center; margin-bottom: 3rem; color: #ff6b35; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .menu-item { background: #f8f9fa; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .menu-item:hover { transform: translateY(-10px); }
+        .menu-item h4 { color: #ff6b35; font-size: 1.5em; margin-bottom: 1rem; }
+        .price { font-size: 1.8em; font-weight: 700; color: #ff4757; }
+        .contact { background: #fff; text-align: center; }
+        .map { height: 400px; background: #ddd; border-radius: 15px; margin: 2rem 0; display: flex; align-items: center; justify-content: center; color: #666; }
+        footer { background: #333; color: white; text-align: center; padding: 2rem; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .hero h2 { font-size: 2.5em; } nav ul { display: none; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>🍕 Tomato Pizza e Cucina</h1>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contatti</a></li>
+                <li><a href="tel:3489291264">Chiama</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <h2>La Migliore Pizza Fresca</h2>
+        <p>Ingredienti locali, impasto lievitato 72h. Ordina ora!</p>
+        <button class="cta" onclick="window.open('https://wa.me/393489291264?text=Ciao%2C%20vorrei%20ordinare%20una%20pizza%21')">Ordina su WhatsApp</button>
+    </section>
+    <section id="menu">
+        <h3>Il Nostro Menu Pizza</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h4>Margherita</h4>
+                <p>Pomodoro, mozzarella fiordilatte, basilico fresco.</p>
+                <div class="price">€9</div>
+            </div>
+            <div class="menu-item">
+                <h4>Diavola</h4>
+                <p>Pomodoro, mozzarella, salame piccante, olive.</p>
+                <div class="price">€11</div>
+            </div>
+            <div class="menu-item">
+                <h4>Quattro Stagioni</h4>
+                <p>Pomodoro, mozzarella, funghi, prosciutto, carciofi, olive.</p>
+                <div class="price">€12</div>
+            </div>
+            <div class="menu-item">
+                <h4>Vegetariana</h4>
+                <p>Pomodoro, mozzarella, verdure grigliate, rucola.</p>
+                <div class="price">€10</div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <h3>Vieni a Trovarci</h3>
+        <p>Montecchio Maggiore - Alte Ceccato, Veneto</p>
+        <p>Tel: <a href="tel:3489291264">348 9291264</a> | WhatsApp per ordini</p>
+        <div class="map">Mappa Google: Inserisci iframe qui (es. https://www.google.com/maps/embed?pb=...)</div>
+    </section>
+    <footer>
+        <p>&copy; 2026 Tomato Pizza e Cucina. Tutti i diritti riservati. Design by Perplexity.</p>
+    </footer>
+    <script>
+        // Animazioni scroll
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.menu-item').forEach((el, i) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) el.style.animation = `fadeInUp 0.8s ease ${i*0.1}s forwards`;
+            });
+        });
+    </script>
+</body>
+</html>
