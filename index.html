@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOMATO – Pizza e Cucina</title>
 
-    <!-- Font simili a Satoshi + IvyPresto -->
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -89,7 +88,7 @@
             opacity: 0.8;
         }
 
-        /* NAV */
+        /* NAV DESKTOP */
         nav ul {
             list-style: none;
             display: flex;
@@ -130,7 +129,7 @@
             font-weight: 600;
         }
 
-        /* DROPDOWN MENU */
+        /* DROPDOWN MENU DESKTOP */
         .has-dropdown:hover .dropdown {
             opacity: 1;
             pointer-events: auto;
@@ -165,6 +164,44 @@
         }
 
         .dropdown a:hover { background: #f3eadd; }
+
+        /* HAMBURGER MOBILE */
+        .burger {
+            display: none;
+            width: 32px;
+            height: 24px;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .burger span {
+            display: block;
+            height: 3px;
+            border-radius: 999px;
+            background: #333;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .burger.active span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger.active span:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-menu ul {
+            display: flex;
+        }
 
         /* SEZIONI BASE */
         main { padding-bottom: 3rem; }
@@ -271,9 +308,6 @@
             margin-bottom: 0.3rem;
         }
 
-        .menu-item-name { font-weight: 500; }
-        .menu-item-price { font-weight: 600; }
-
         /* RECENSIONI */
         .reviews-wrapper {
             margin-top: 2.2rem;
@@ -322,9 +356,32 @@
                 padding-top: 3.2rem;
             }
             .hero-visual { order: -1; }
-            nav ul { display: none; } /* mobile: per ora niente burger */
-            .menu-columns { grid-template-columns: 1fr; }
-            .reviews-grid { grid-template-columns: 1fr; }
+
+            .nav-menu {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: #f3eadd;
+                padding: 0.75rem 1.25rem 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+                display: none;
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .burger {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -341,30 +398,38 @@
             </div>
         </div>
 
-        <!-- Menu con “MENU” a tendina -->
-        <nav>
-            <ul>
-                <li><a href="#storia">Storia</a></li>
+        <!-- Menu + Burger -->
+        <div class="nav-menu" id="navMenu">
+            <nav>
+                <ul>
+                    <li><a href="#storia">Storia</a></li>
 
-                <li class="has-dropdown">
-                    <a href="#menu">Menu</a>
-                    <ul class="dropdown">
-                        <li><a href="#menu">Pizza</a></li>
-                        <li><a href="#menu">Cucina</a></li>
-                        <li><a href="#menu">Dolci</a></li>
-                        <li><a href="#menu">Bevande</a></li>
-                    </ul>
-                </li>
+                    <li class="has-dropdown">
+                        <a href="#menu">Menu</a>
+                        <ul class="dropdown">
+                            <li><a href="#menu">Pizza</a></li>
+                            <li><a href="#menu">Cucina</a></li>
+                            <li><a href="#menu">Dolci</a></li>
+                            <li><a href="#menu">Bevande</a></li>
+                        </ul>
+                    </li>
 
-                <li><a href="#recensioni">Recensioni</a></li>
-                <li><a href="#contatti" class="nav-cta">Prenota / Ordina</a></li>
-            </ul>
-        </nav>
+                    <li><a href="#recensioni">Recensioni</a></li>
+                    <li><a href="#contatti" class="nav-cta">Prenota / Ordina</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
 </header>
 
 <main>
-    <!-- HERO + STORYTELLING -->
+    <!-- HERO -->
     <section id="storia" class="hero">
         <div>
             <div class="section-label">TOMATO PIZZA &amp; CUCINA</div>
@@ -384,17 +449,16 @@
             </div>
         </div>
         <div class="hero-visual">
-            <!-- Sostituisci con una tua foto -->
             <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1400&q=80" alt="Pizza TOMATO">
         </div>
     </section>
 
-    <!-- MENU GENERALE (testo, niente lista pizze dettagliata) -->
+    <!-- MENU GENERALE -->
     <section id="menu">
         <div class="section-label">MENU</div>
         <h2 class="section-title">Pizza, cucina, dolci e bevande.</h2>
         <p class="body-copy">
-            Un menu corto e curato, che cambia quando cambiano le stagioni. La base è sempre la stessa:
+            Un menu corto e curato che segue le stagioni. La base è sempre la stessa:
             impasto leggero, ingredienti scelti e piatti pensati per stare bene a tavola, senza complicazioni.
         </p>
 
@@ -403,8 +467,7 @@
                 <div class="menu-block-title">Pizza</div>
                 <p class="body-copy" style="font-size:0.9rem;">
                     Margherita, classici di sempre e pizze di territorio con radicchio, salsiccia, verdure
-                    e formaggi selezionati. Ogni pizza è disponibile anche con richieste particolari
-                    (quando possibile).
+                    e formaggi selezionati. Ogni pizza è disponibile, quando possibile, anche con richieste particolari.
                 </p>
             </div>
             <div>
@@ -417,15 +480,16 @@
         </div>
     </section>
 
-    <!-- RECENSIONI CLIENTI -->
+    <!-- RECENSIONI -->
     <section id="recensioni">
         <div class="section-label">RECENSIONI</div>
         <h2 class="section-title">Quello che dicono i nostri clienti.</h2>
+
         <a href="https://g.page/r/Cb2D--krax47EAE/review" target="_blank" rel="noopener">
-    <button class="btn-primary" style="margin-top:1rem;">
-        Lascia una recensione su Google
-    </button>
-</a>
+            <button class="btn-primary" style="margin-top:1rem;">
+                Lascia una recensione su Google
+            </button>
+        </a>
 
         <div class="reviews-wrapper">
             <div class="reviews-grid">
@@ -435,22 +499,21 @@
                         chi del profumo appena si entra, chi della cordialità in sala.
                     </p>
                     <p class="body-copy" style="margin-top:0.8rem;">
-                        In questa sezione puoi vedere le recensioni aggiornate dal profilo Google di TOMATO:
-                        niente filtri, solo l’esperienza reale di chi si è seduto ai nostri tavoli.
+                        In questa sezione potrai inserire un widget con le recensioni aggiornate
+                        direttamente dal profilo Google di TOMATO.
                     </p>
                 </div>
                 <div class="reviews-placeholder">
-                    <!-- QUI INCOLLI IL WIDGET GOOGLE REVIEWS -->
-                    Incolla qui il codice del widget Google Reviews<br>
-                    (Elfsight, Taggbox, EmbedSocial, ecc.).<br>
-                    Verranno mostrate le recensioni in tempo reale dal tuo profilo Google Business.
+                    <!-- Qui in futuro incolli il codice del widget Google Reviews -->
+                    Spazio per il widget Google Reviews<br>
+                    (Elfsight, Taggbox, EmbedSocial, ecc.).
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CONTATTI -->
-    <section id="contatti">¢
+    <section id="contatti">
         <div class="section-label">CONTATTI</div>
         <h2 class="section-title">Prenota o ordina da TOMATO.</h2>
         <p class="body-copy">
@@ -474,6 +537,17 @@
     <span>&copy; 2026 TOMATO – Pizza &amp; Cucina. Tutti i diritti riservati.</span>
     <span>Identità ispirata al manuale di brand TOMATO.</span>
 </footer>
+
+<script>
+    // Burger menu mobile
+    const burger = document.getElementById('burger');
+    const navMenu = document.getElementById('navMenu');
+
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('active');
+        navMenu.classList.toggle('open');
+    });
+</script>
 
 </body>
 </html>
