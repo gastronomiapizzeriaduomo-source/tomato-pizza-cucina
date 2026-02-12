@@ -3,94 +3,730 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomato Pizza e Cucina - Pizzeria Vicino a Te</title>
+    <title>TOMATO – Pizza e Cucina</title>
+
+    <!-- Google Fonts (simili a Satoshi + IvyPresto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; }
-        header { background: #ff6b35; color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
-        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
-        nav h1 { font-size: 1.8em; }
-        nav ul { display: flex; list-style: none; }
-        nav li { margin-left: 2rem; }
-        nav a { color: white; text-decoration: none; font-weight: 600; }
-        .hero { background: url('https://via.placeholder.com/1920x800/ff6b35/ffffff?text=Pizza+Fresca') center/cover; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); padding: 0 2rem; margin-top: 60px; }
-        .hero h2 { font-size: 3.5em; margin-bottom: 1rem; animation: fadeInUp 1s ease; }
-        .hero p { font-size: 1.5em; margin-bottom: 2rem; }
-        .cta { background: #ff4757; color: white; padding: 1.2rem 3rem; border: none; border-radius: 50px; font-size: 1.2em; cursor: pointer; transition: all 0.3s; font-weight: 600; }
-        .cta:hover { transform: scale(1.05); background: #ff3742; }
-        section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
-        h3 { font-size: 2.5em; text-align: center; margin-bottom: 3rem; color: #ff6b35; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .menu-item { background: #f8f9fa; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .menu-item:hover { transform: translateY(-10px); }
-        .menu-item h4 { color: #ff6b35; font-size: 1.5em; margin-bottom: 1rem; }
-        .price { font-size: 1.8em; font-weight: 700; color: #ff4757; }
-        .contact { background: #fff; text-align: center; }
-        .map { height: 400px; background: #ddd; border-radius: 15px; margin: 2rem 0; display: flex; align-items: center; justify-content: center; color: #666; }
-        footer { background: #333; color: white; text-align: center; padding: 2rem; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { .hero h2 { font-size: 2.5em; } nav ul { display: none; } }
+        :root {
+            /* Colori del logo */
+            --tomato-red: #FF4F2C;
+            --tomato-beige: #f3eadd;
+            --tomato-green: #006768;
+
+            /* Colori abbinati */
+            --tomato-rose: #f7bbb2;
+            --tomato-lime: #c5d984;
+            --tomato-blue: #6a77b8;
+            --tomato-pink: #ed8eba;
+            --tomato-black: #000000;
+
+            --bg-light: #ffffff;
+            --text-main: #111111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text-main);
+            background: #faf7f3;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(243, 234, 221, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.85rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-mark {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--tomato-red);
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 999px;
+            background: var(--tomato-green);
+            top: -4px;
+            right: 6px;
+            transform: rotate(-15deg);
+        }
+
+        .logo-text-main {
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            font-size: 0.95rem;
+        }
+
+        .logo-text-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        nav li a {
+            position: relative;
+        }
+
+        nav li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--tomato-red);
+            transition: width 0.25s ease;
+        }
+
+        nav li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
+            background: var(--tomato-red);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* HERO SPLIT */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4.5rem 1.5rem 4rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-copy-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--tomato-green);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', "Times New Roman", serif;
+            font-size: clamp(2.4rem, 4vw, 3.1rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            color: var(--tomato-red);
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            max-width: 26rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tag-pill {
+            border-radius: 999px;
+            border: 1px solid rgba(0,0,0,0.08);
+            padding: 0.4rem 0.75rem;
+            font-size: 0.75rem;
+            background: #fff;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .btn-primary {
+            padding: 0.75rem 1.6rem;
+            border-radius: 999px;
+            border: none;
+            background: var(--tomato-red);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 12px 25px rgba(233, 79, 53, 0.25);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            background: #e13f20;
+            box-shadow: 0 18px 32px rgba(233, 79, 53, 0.35);
+        }
+
+        .hero-small-note {
+            font-size: 0.78rem;
+            opacity: 0.8;
+        }
+
+        .hero-visual {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            background: var(--tomato-beige);
+            min-height: 320px;
+            box-shadow: 0 26px 40px rgba(0,0,0,0.09);
+        }
+
+        .hero-main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(1.15);
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            right: 10%;
+            bottom: 8%;
+            background: #fff;
+            border-radius: 16px;
+            padding: 0.8rem 1rem;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.16);
+            font-size: 0.75rem;
+        }
+
+        .hero-floating-card span {
+            display: block;
+        }
+
+        .hero-floating-label {
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.68rem;
+            color: var(--tomato-green);
+        }
+
+        .hero-floating-main {
+            font-weight: 700;
+        }
+
+        /* SECTION WRAPPER */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3.5rem 1.5rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--tomato-green);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-grid-2 {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .body-copy {
+            font-size: 0.95rem;
+            max-width: 32rem;
+        }
+
+        .mute-text {
+            font-size: 0.8rem;
+            opacity: 0.75;
+        }
+
+        /* BRAND COLORS STRIPES */
+        .brand-colors {
+            padding-top: 2rem;
+        }
+
+        .color-row-main,
+        .color-row-alt {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .color-swatch {
+            border-radius: 14px;
+            padding: 1.1rem 1rem;
+            color: #111;
+            font-size: 0.78rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 90px;
+        }
+
+        .color-swatch strong {
+            font-size: 0.86rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .color-hex {
+            font-family: monospace;
+            font-size: 0.78rem;
+        }
+
+        .color-main-1 { background: var(--tomato-red); color: #fff; }
+        .color-main-2 { background: var(--tomato-beige); }
+        .color-main-3 { background: var(--tomato-green); color: #fff; }
+        .color-main-4 { background: #ffffff; border: 1px solid rgba(0,0,0,0.06); }
+
+        .color-alt-1 { background: var(--tomato-rose); }
+        .color-alt-2 { background: var(--tomato-lime); }
+        .color-alt-3 { background: var(--tomato-blue); color: #fff; }
+        .color-alt-4 { background: var(--tomato-pink); }
+
+        /* PIZZA & CUCINA GRID */
+        .cards-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.75rem;
+            margin-top: 2.25rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.5rem 1.6rem 1.7rem;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: rgba(0,0,0,0.55);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-body {
+            font-size: 0.84rem;
+            opacity: 0.85;
+        }
+
+        .card-price {
+            font-size: 0.86rem;
+            font-weight: 700;
+            margin-top: 0.6rem;
+            color: var(--tomato-red);
+        }
+
+        /* CTA DOWNLOAD / CONTATTI */
+        .cta-app {
+            background: linear-gradient(135deg, var(--tomato-beige), #ffffff);
+            border-radius: 26px;
+            padding: 2.1rem 2rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 2rem;
+            align-items: center;
+            box-shadow: 0 28px 40px rgba(0,0,0,0.08);
+            margin-top: 1.5rem;
+        }
+
+        .cta-app-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.1rem;
+        }
+
+        .btn-outline {
+            border-radius: 999px;
+            border: 1px solid rgba(0,0,0,0.22);
+            padding: 0.65rem 1.3rem;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: #fff;
+        }
+
+        .cta-contact {
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+        }
+
+        .cta-contact a {
+            color: var(--tomato-green);
+            font-weight: 600;
+        }
+
+        .cta-map-placeholder {
+            background: #e5ded2;
+            border-radius: 18px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: rgba(0,0,0,0.6);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2.4rem 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.78rem;
+            color: rgba(0,0,0,0.65);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 3.5rem;
+            }
+            .hero-visual {
+                order: -1;
+            }
+            .section-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .cards-3 {
+                grid-template-columns: 1fr;
+            }
+            .color-row-main,
+            .color-row-alt {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .cta-app {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .color-row-main,
+            .color-row-alt {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
+
+<header>
+    <div class="nav-inner">
+        <div class="logo-mark">
+            <div class="logo-icon"></div>
+            <div>
+                <div class="logo-text-main">TOMATO</div>
+                <div class="logo-text-sub">PIZZA &amp; CUCINA</div>
+            </div>
+        </div>
         <nav>
-            <h1>🍕 Tomato Pizza e Cucina</h1>
             <ul>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#contact">Contatti</a></li>
-                <li><a href="tel:3489291264">Chiama</a></li>
+                <li><a href="#storia">Storia</a></li>
+                <li><a href="#identita">Identità</a></li>
+                <li><a href="#menu">Pizza &amp; Cucina</a></li>
+                <li><a href="#contatti" class="nav-cta">Prenota / Ordina</a></li>
             </ul>
         </nav>
-    </header>
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
     <section class="hero">
-        <h2>La Migliore Pizza Fresca</h2>
-        <p>Ingredienti locali, impasto lievitato 72h. Ordina ora!</p>
-        <button class="cta" onclick="window.open('https://wa.me/393489291264?text=Ciao%2C%20vorrei%20ordinare%20una%20pizza%21')">Ordina su WhatsApp</button>
-    </section>
-    <section id="menu">
-        <h3>Il Nostro Menu Pizza</h3>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <h4>Margherita</h4>
-                <p>Pomodoro, mozzarella fiordilatte, basilico fresco.</p>
-                <div class="price">€9</div>
+        <div>
+            <div class="hero-copy-label">TOMATO PIZZA &amp; CUCINA</div>
+            <h1 class="hero-title">
+                Sapori che <span>raccontano il territorio</span>, ogni morso una storia.
+            </h1>
+            <p class="hero-subtitle">
+                Un luogo dove l’impasto, il pomodoro e gli ingredienti freschi diventano linguaggio. 
+                Una pizzeria che parla di territorio, persone e convivialità.
+            </p>
+
+            <div class="hero-tags">
+                <div class="hero-tag-pill">Impasto a lunga lievitazione</div>
+                <div class="hero-tag-pill">Ingredienti del territorio</div>
+                <div class="hero-tag-pill">Cucina &amp; Pizza</div>
             </div>
-            <div class="menu-item">
-                <h4>Diavola</h4>
-                <p>Pomodoro, mozzarella, salame piccante, olive.</p>
-                <div class="price">€11</div>
+
+            <div class="hero-cta-row">
+                <button class="btn-primary" onclick="window.open('https://wa.me/393489291264?text=Ciao%2C%20vorrei%20prenotare%20da%20TOMATO','_blank')">
+                    Prenota un tavolo
+                </button>
+                <span class="hero-small-note">
+                    Oppure chiama <strong>348 9291264</strong> per informazioni e ordini.
+                </span>
             </div>
-            <div class="menu-item">
-                <h4>Quattro Stagioni</h4>
-                <p>Pomodoro, mozzarella, funghi, prosciutto, carciofi, olive.</p>
-                <div class="price">€12</div>
-            </div>
-            <div class="menu-item">
-                <h4>Vegetariana</h4>
-                <p>Pomodoro, mozzarella, verdure grigliate, rucola.</p>
-                <div class="price">€10</div>
+        </div>
+
+        <div class="hero-visual">
+            <!-- Sostituisci l'immagine con una tua foto pizza/locale -->
+            <img class="hero-main-img" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1400&q=80" alt="Pizza TOMATO">
+            <div class="hero-floating-card">
+                <span class="hero-floating-label">Montecchio Maggiore</span>
+                <span class="hero-floating-main">Pizza &amp; Cucina di territorio</span>
+                <span class="hero-floating-sub">Sapori contemporanei, radici locali.</span>
             </div>
         </div>
     </section>
-    <section id="contact" class="contact">
-        <h3>Vieni a Trovarci</h3>
-        <p>Montecchio Maggiore - Alte Ceccato, Veneto</p>
-        <p>Tel: <a href="tel:3489291264">348 9291264</a> | WhatsApp per ordini</p>
-        <div class="map">Mappa Google: Inserisci iframe qui (es. https://www.google.com/maps/embed?pb=...)</div>
+
+    <!-- STORIA / BRAND -->
+    <section id="storia">
+        <div class="section-grid-2">
+            <div>
+                <div class="section-label">IL PROGETTO</div>
+                <h2 class="section-title">Una pizzeria che nasce da un racconto di territorio.</h2>
+                <p class="body-copy">
+                    TOMATO è una pizza e una cucina che mettono al centro il territorio veneto, i produttori, 
+                    i sapori che riconosci al primo morso. Un brand pensato per essere contemporaneo, 
+                    ma profondamente radicato nella tradizione.
+                </p>
+                <p class="body-copy" style="margin-top: 0.9rem;">
+                    Il linguaggio visivo, i colori, il tono di voce e ogni dettaglio dell’esperienza 
+                    raccontano un’unica storia: quella di una pizzeria che vuole essere casa, 
+                    ritrovo e scoperta gastronomica allo stesso tempo.
+                </p>
+            </div>
+            <div>
+                <p class="mute-text">
+                    Brand identity, logo, colori istituzionali e lettering sono studiati per creare 
+                    un segno distintivo forte, riconoscibile e replicabile su menù, packaging, 
+                    comunicazione digital e spazi fisici.
+                </p>
+            </div>
+        </div>
     </section>
-    <footer>
-        <p>&copy; 2026 Tomato Pizza e Cucina. Tutti i diritti riservati. Design by Perplexity.</p>
-    </footer>
-    <script>
-        // Animazioni scroll
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.menu-item').forEach((el, i) => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight) el.style.animation = `fadeInUp 0.8s ease ${i*0.1}s forwards`;
-            });
-        });
-    </script>
+
+    <!-- IDENTITÀ VISIVA / COLORI -->
+    <section id="identita" class="brand-colors">
+        <div class="section-label">IDENTITÀ VISIVA</div>
+        <h2 class="section-title">Colori istituzionali e lettering.</h2>
+        <p class="body-copy">
+            Una palette calda, con il rosso TOMATO come protagonista, accompagnato da beige, verde petrolio 
+            e accenti cromatici che raccontano ingredienti, stagioni e territorio.
+        </p>
+
+        <div class="color-row-main" style="margin-top: 1.75rem;">
+            <div class="color-swatch color-main-1">
+                <strong>Rosso TOMATO</strong>
+                <span>SRGB 233-79-53</span>
+                <span class="color-hex">HEX #FF4F2C</span>
+            </div>
+            <div class="color-swatch color-main-2">
+                <strong>Beige</strong>
+                <span>SRGB 243-234-221</span>
+                <span class="color-hex">HEX #f3eadd</span>
+            </div>
+            <div class="color-swatch color-main-3">
+                <strong>Verde</strong>
+                <span>SRGB 0-103-104</span>
+                <span class="color-hex">HEX #006768</span>
+            </div>
+            <div class="color-swatch color-main-4">
+                <strong>Nero / Nero Ricco</strong>
+                <span>SRGB 0-0-0</span>
+                <span class="color-hex">HEX #000000</span>
+            </div>
+        </div>
+
+        <div class="color-row-alt">
+            <div class="color-swatch color-alt-1">
+                <strong>Accento 1</strong>
+                <span>SRGB 247-188-179</span>
+                <span class="color-hex">HEX #f7bbb2</span>
+            </div>
+            <div class="color-swatch color-alt-2">
+                <strong>Accento 2</strong>
+                <span>SRGB 197-217-132</span>
+                <span class="color-hex">HEX #c5d984</span>
+            </div>
+            <div class="color-swatch color-alt-3">
+                <strong>Accento 3</strong>
+                <span>SRGB 106-119-184</span>
+                <span class="color-hex">HEX #6a77b8</span>
+            </div>
+            <div class="color-swatch color-alt-4">
+                <strong>Accento 4</strong>
+                <span>SRGB 237-142-186</span>
+                <span class="color-hex">HEX #ed8eba</span>
+            </div>
+        </div>
+
+        <p class="mute-text" style="margin-top: 0.5rem;">
+            Font suggeriti: titoli serif (simile IvyPresto), testi e interfaccia sans serif contemporanea (simile Satoshi). [file:52]
+        </p>
+    </section>
+
+    <!-- PIZZA & CUCINA -->
+    <section id="menu">
+        <div class="section-label">PIZZA &amp; CUCINA</div>
+        <h2 class="section-title">Una selezione di pizze che parlano di te.</h2>
+        <p class="body-copy">
+            Dal grande classico alla pizza di territorio, ogni combinazione è pensata per esaltare 
+            ingredienti e stagioni, mantenendo leggerezza, digeribilità e gusto.
+        </p>
+
+        <div class="cards-3">
+            <article class="card">
+                <div class="card-tag">Pizza del territorio</div>
+                <div class="card-title">Duomo</div>
+                <p class="card-body">
+                    Pomodoro, mozzarella, radicchio, salsiccia, gorgonzola: un omaggio ai sapori intensi 
+                    e alle sere d’inverno.
+                </p>
+                <div class="card-price">€9,70</div>
+            </article>
+
+            <article class="card">
+                <div class="card-tag">Vegetariana</div>
+                <div class="card-title">Vegetariana</div>
+                <p class="card-body">
+                    Pomodoro, mozzarella, radicchio, melanzane, zucchine, peperoncino: la terra nel piatto, 
+                    senza rinunciare al carattere.
+                </p>
+                <div class="card-price">€10,70</div>
+            </article>
+
+            <article class="card">
+                <div class="card-tag">Speciale</div>
+                <div class="card-title">Delicata</div>
+                <p class="card-body">
+                    Pomodoro, mozzarella, zucchine grigliate, stracchino, prosciutto cotto: una pizza morbida, 
+                    avvolgente, perfetta per chi cerca equilibrio.
+                </p>
+                <div class="card-price">€10,70</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- CTA APP / CONTATTI -->
+    <section id="contatti">
+        <div class="cta-app">
+            <div>
+                <div class="section-label">ORDINA &amp; PRENOTA</div>
+                <h2 class="section-title">TOMATO sempre con te.</h2>
+                <p class="body-copy">
+                    Prenota un tavolo, ordina la tua pizza preferita o scopri il menù completo direttamente 
+                    dall’app TOMATO – Pizza e Cucina.
+                </p>
+
+                <div class="cta-app-buttons">
+                    <a class="btn-outline" href="https://play.google.com/store/apps/details?id=it.webapp.tomatopizzaecucina" target="_blank" rel="noopener">
+                        <span>Scarica su Google Play</span>
+                    </a>
+                    <a class="btn-outline" href="https://wa.me/393489291264?text=Ciao%2C%20vorrei%20ordinare%20da%20TOMATO" target="_blank" rel="noopener">
+                        <span>Ordina via WhatsApp</span>
+                    </a>
+                </div>
+
+                <p class="cta-contact">
+                    Telefono: <a href="tel:3489291264">348 9291264</a><br>
+                    Segui TOMATO sui social per novità e fuori menù.
+                </p>
+            </div>
+            <div>
+                <div class="cta-map-placeholder">
+                    Qui puoi inserire l’<strong>iframe di Google Maps</strong> con l’indirizzo del locale.
+                </div>
+                <p class="mute-text" style="margin-top: 0.5rem;">
+                    Sostituisci questo box con il codice embed di Google Maps per la sede di Montecchio Maggiore.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <span>&copy; 2026 TOMATO – Pizza &amp; Cucina. Tutti i diritti riservati.</span>
+    <span>Branding ispirato alle linee guida ufficiali TOMATO. [file:52]</span>
+</footer>
+
 </body>
 </html>
+
