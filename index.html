@@ -383,6 +383,41 @@
                 display: flex;
             }
         }
+        /* HERO CON TESTO SOPRA L’IMMAGINE */
+.hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.3rem 1.25rem 0;
+}
+
+.hero-visual {
+    border-radius: 26px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+}
+
+.hero-text-overlay {
+    position: absolute;
+    top: 12%;
+    left: 8%;
+    color: #ffffff;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    font-family: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.hero-text-overlay p {
+    font-weight: 800;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+}
+
+.hero-text-overlay small {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+}
     </style>
 </head>
 <body>
@@ -433,26 +468,17 @@
     <!-- HERO -->
     <section id="storia" class="hero">
         <div>
-            <div class="section-label">TOMATO PIZZA &amp; CUCINA</div>
-            <h1 class="hero-title">
-                Sapori che raccontano il territorio, <span>ogni morso una storia.</span>
-            </h1>
-            <p class="hero-subtitle">
-                TOMATO nasce dall’idea di portare in tavola una pizza leggera, fatta con ingredienti del territorio
-                e un impasto a lunga lievitazione. Un locale semplice, accogliente, dove fermarsi per una pizza,
-                un piatto di cucina o un bicchiere in compagnia.
-            </p>
-            <div class="hero-cta-row">
-                <button class="btn-primary" onclick="window.open('https://wa.me/0444493228?text=Ciao%2C%20vorrei%20prenotare%20da%20TOMATO','_blank')">
-                    Ordina dal App
-                </button>
-                <span class="hero-note">Oppure chiama <strong>0444493228</strong> per informazioni e ordini.</span>
-            </div>
+            <section id="storia" class="hero">
+    <div class="hero-visual" style="position:relative;">
+        <img src="foto-pizza-tomato.jpg" alt="Pizza TOMATO">
+
+        <!-- Testo grande sopra l'immagine -->
+        <div class="hero-text-overlay">
+            <p>Zero idee<br>per pranzo?<br>…e a cena?</p>
+            <small>Noi ne abbiamo mille<br>…e sono già pronte!</small>
         </div>
-        <div class="hero-visual">
-                <img src="foto-pizza-tomato.jpg" alt="Pizza TOMATO">
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- MENU GENERALE -->
     <section id="menu">
