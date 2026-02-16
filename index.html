@@ -412,11 +412,39 @@
     line-height: 1.05;
     margin-bottom: 1rem;
 }
-
 .hero-text-overlay small {
     display: block;
-    font-weight: 700;
-    font-size: 1rem;
+    font-weight: 800;
+    font-size: 1.2rem;   /* più grande di prima */
+    margin-bottom: 1.6rem;
+}
+
+/* Bottone tipo "ORDINA SUBITO!" */
+.hero-order-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.1rem 2.4rem;
+    border-radius: 999px;
+    background: #ff4f2c;          /* arancione TOMATO */
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 16px 28px rgba(0,0,0,0.35);
+    border: 4px solid #ffffff;    /* bordo bianco come nel modello */
+}
+
+.hero-order-btn:hover {
+    background: #e63f1f;
+}
+
+.hero-arrow {
+    font-size: 1.2rem;
+}
+
 }
     </style>
 </head>
@@ -478,11 +506,11 @@
             <small>Noi ne abbiamo mille<br>…e sono già pronte!</small>
 
             <a class="hero-order-btn"
-               href="https://service.web-app.it/pluto_3.0/area_clienti/mobile/smartphonecard2015.9/webapp/webapp.php?area_clienti=tomatopizzaecucina&visione_web=1"
-               target="_blank" rel="noopener">
-                ORDINA ORA
-                <span class="hero-arrow">➜</span>
-            </a>
+   href="https://service.web-app.it/pluto_3.0/area_clienti/mobile/smartphonecard2015.9/webapp/webapp.php?area_clienti=tomatopizzaecucina&visione_web=1"
+   target="_blank" rel="noopener">
+    ORDINA SUBITO!
+    <span class="hero-arrow">➜</span>
+     </a>
         </div>
     </div>
 </section>
