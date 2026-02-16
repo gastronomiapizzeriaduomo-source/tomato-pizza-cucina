@@ -448,11 +448,31 @@
 .hero-arrow {
     font-size: 1.2rem;
 }
-/* Sezione contatti con sfondo verde TOMATO */
+/* CONTATTI (verde) - STESSA FORMA ROSA */
 #contatti {
-    background: #006768;
-    color: #ffffff;
-    padding-bottom: 3rem;
+    background: linear-gradient(135deg, #c5d984 0%, #a8c76a 100%) !important;
+    color: #1a3c00 !important;
+    padding: 3rem 2rem !important;
+    margin: 2rem 0 !important;
+    border-radius: 20px !important;
+    box-shadow: 0 15px 35px rgba(197,217,132,0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+#contatti .section-label,
+#contatti h2,
+#contatti .body-copy,
+#contatti a {
+    color: #1a3c00 !important;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.8) !important;
+}
+
+#contatti a {
+    background: #6a77b8 !important;
+    color: white !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 10px !important;
 }
 
 #contatti a {
@@ -507,27 +527,6 @@
     background: rgba(255,255,255,0.1) !important;
     padding: 1.5rem !important;
     border-radius: 12px !important;
-}
-/* VERDE SCURO - STESSA FORMA ROSA */
-#ordina, .app-section, 
-section:has([class*="ordina"]), 
-div:has(h2:contains("ORDINA")) {
-    border-radius: 20px !important;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
-    overflow: hidden !important;
-}
-
-#ordina::before,
-.app-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    border-radius: 20px;
-    z-index: -1;
 }
 
     </style>
