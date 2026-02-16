@@ -508,6 +508,27 @@
     padding: 1.5rem !important;
     border-radius: 12px !important;
 }
+/* VERDE SCURO - STESSA FORMA ROSA */
+#ordina, .app-section, 
+section:has([class*="ordina"]), 
+div:has(h2:contains("ORDINA")) {
+    border-radius: 20px !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+    overflow: hidden !important;
+}
+
+#ordina::before,
+.app-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    border-radius: 20px;
+    z-index: -1;
+}
 
     </style>
 </head>
