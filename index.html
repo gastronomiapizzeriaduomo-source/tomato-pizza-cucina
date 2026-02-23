@@ -771,14 +771,19 @@
 .menu-columns .menu-desc {
   text-align: center;
 }
-
-/* opzionale: solo mobile + box più stretto */
+/* solo mobile */
 @media (max-width: 900px) {
+  .menu-columns {
+    display: flex;
+    justify-content: center;
+  }
+
   .menu-columns .menu-desc {
     text-align: center;
     max-width: 22rem;
     margin: 0 auto;
   }
+
 }
 
     </style>
