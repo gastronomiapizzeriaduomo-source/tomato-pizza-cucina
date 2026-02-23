@@ -501,6 +501,59 @@
     justify-content: space-between;
     gap: 1rem;
 }
+        /* SEZIONE DOWNLOAD APP */
+#download-app {
+  background: #c5d984;              /* verde chiaro */
+  margin: 2rem 0;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.download-app-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.download-app-buttons {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.download-app-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-app-img {
+  max-width: 260px;
+  border-radius: 22px;
+  box-shadow: 0 16px 30px rgba(0,0,0,0.35);
+}
+
+/* mobile */
+@media (max-width: 900px) {
+  #download-app {
+    padding: 2.2rem 1.5rem;
+  }
+
+  .download-app-inner {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .download-app-img {
+    max-width: 70%;
+  }
+}
+
 
 
 /* RECENSIONI - stessa forma del menu */
@@ -663,31 +716,36 @@
             </div>
         </div>
     </section>
+    
+    <section id="download-app">
+  <div class="download-app-inner">
 
-    <!-- CONTATTI -->
-    <section id="contatti">
-        <div class="section-label">CONTATTI</div>
-        <h2 class="section-title">Ordina da TOMATO App.</h2>
-        <p class="body-copy">
-            Vuoi qualche informazione in più sul menu?
-            Chiamaci direttamente: ti rispondiamo noi.
-        </p>
-    <p class="body-copy" style="margin-top:0.8rem;">
-        Oppure apri direttamente la posizione su Maps:
-        <a href="https://maps.app.goo.gl/wxUN6XieS34uStz46?g_st=ic" target="_blank" rel="noopener">
-            Apri TOMATO su Google Maps
+    <div class="download-app-text">
+      <div class="section-label">APP TOMATO</div>
+      <h2 class="section-title">Scarica TOMATO App.</h2>
+      <p class="body-copy">
+        Ordina le tue pizze e i piatti di cucina direttamente dall’app,
+        salva i tuoi preferiti e riodina in pochi tap.
+      </p>
+
+      <div class="download-app-buttons">
+        <a class="btn-primary"
+           href="https://url.velocissimo.app/o/155"
+           target="_blank" rel="noopener">
+          Scarica l'app
         </a>
-    </p>
+      </div>
+    </div>
 
-        <div style="margin-top:1.4rem;">
-            <button class="btn-primary" href="https://service.web-app.it/pluto_3.0/area_clienti/mobile/smartphonecard2015.9/webapp/webapp.php?area_clienti=tomatopizzaecucina&visione_web=1")">
-                Ordina Ora
-            </button>
-            <p class="hero-note" style="margin-top:0.7rem;">
-                Telefono: <a href="tel:0444493228">0444493228</a><br>
-            </p>
-        </div>
-    </section>
+    <div class="download-app-image">
+      <img src="tomato-app.jpg"
+           alt="Schermata TOMATO App"
+           class="download-app-img">
+    </div>
+
+  </div>
+</section>
+    
 </main>
 </div>
     <span>&copy; 2026 TOMATO – Pizza &amp; Cucina. Tutti i diritti riservati.</span>
