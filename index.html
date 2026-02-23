@@ -641,12 +641,66 @@
     padding: 1.5rem !important;
     border-radius: 12px !important;
 }
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.social-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fcd2e3;        /* rosa chiaro */
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.social-circle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+}
 
     </style>
 </head>
 <body>
 <header>
    <header>
+       <div class="nav-inner">
+  <div class="logo-mark">
+    <img src="https://raw.githubusercontent.com/gastronomiapizzeriaduomo-source/tomato-pizza-cucina/main/tomato-logo-bianco.jpg"
+         alt="Tomato Pizza e Cucina"
+         style="height:70px;">
+  </div>
+
+  <!-- icone social -->
+  <div class="nav-social">
+    <a href="https://www.facebook.com/share/18PEW7Dw2S/?mibextid=wwXIfr"
+       target="_blank" rel="noopener"
+       class="social-circle social-fb">
+      f
+    </a>
+
+    <a href="https://www.instagram.com/tomatopizzaecucina?igsh=eGs2MXljcjF0YWVm"
+       target="_blank" rel="noopener"
+       class="social-circle social-ig">
+      in
+    </a>
+  </div>
+
+  <!-- Menu + Burger -->
+  <div class="nav-menu" id="navMenu">
+    ...
+  </div>
+</div>
+
     <div class="nav-inner">
         <!-- Logo TOMATO -->
         <div class="logo-mark">
