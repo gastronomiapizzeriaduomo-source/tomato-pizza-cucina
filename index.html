@@ -667,6 +667,101 @@
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.18);
 }
+    /* SEZIONE CONTATTACI FINALE */
+#contattaci-final {
+  background: #FF4F2C;            /* arancione */
+  padding: 3rem 2rem;
+  margin: 2rem 0 0;
+}
+
+.contattaci-final-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  color: #ffffff;
+}
+
+.contattaci-final-tag {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+}
+
+.contattaci-final-title {
+  font-size: 2.1rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.contattaci-final-phone {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.contattaci-final-phone a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.contattaci-final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* bottone WhatsApp, mantiene stile btn-primary ma su sfondo bianco */
+.contattaci-final-whatsapp {
+  background: #ffffff;
+  color: #25D366;                     /* verde WhatsApp */
+  border-radius: 999px;
+  padding: 0.8rem 1.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.contattaci-final-whatsapp:hover {
+  background: #f4f4f4;
+}
+
+/* riquadro bianco con logo */
+.contattaci-final-logo-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contattaci-final-logo-card {
+  background: #ffffff;               /* sotto sfondo bianco */
+  border-radius: 20px;
+  padding: 1.5rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contattaci-final-logo {
+  max-width: 120px;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+  .contattaci-final-inner {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .contattaci-final-logo-wrap {
+    justify-content: flex-start;
+  }
+}
+
 
     </style>
 </head>
@@ -853,6 +948,42 @@
       <img src="mapsfoto.jpg"
            alt="Mappa TOMATO"
            class="maps-photo">
+    </div>
+
+  </div>
+</section>
+<section id="contattaci-final">
+  <div class="contattaci-final-inner">
+
+    <div class="contattaci-final-text">
+      <div class="contattaci-final-tag">
+        PIZZA • CUCINA • TAKE AWAY
+      </div>
+
+      <h2 class="contattaci-final-title">
+        Contattaci.
+      </h2>
+
+      <p class="contattaci-final-phone">
+        Telefono:
+        <a href="tel:0444493228">0444 493228</a>
+      </p>
+
+      <div class="contattaci-final-actions">
+        <a class="btn-primary contattaci-final-whatsapp"
+           href="https://wa.me/390444493228"
+           target="_blank" rel="noopener">
+          Contattaci su WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="contattaci-final-logo-wrap">
+      <div class="contattaci-final-logo-card">
+        <img src="tomato-logo-bianco.jpg"
+             alt="Tomato Pizza e Cucina"
+             class="contattaci-final-logo">
+      </div>
     </div>
 
   </div>
