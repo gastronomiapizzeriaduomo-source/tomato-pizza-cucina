@@ -382,26 +382,31 @@
                 display: flex;
             }
         }
-        /* HERO CON TESTO SOPRA L’IMMAGINE */
+/* HERO FULL-WIDTH CON FOTO PIZZA */
 .hero {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 1.5rem 1.25rem 0;  /* meno spazio sopra/sotto */
-    min-height: 80vh;           /* 80% dell’altezza schermo */
+    padding: 1.5rem 1.25rem 0;
 }
 
 .hero-visual {
+    position: relative;
     border-radius: 26px;
     overflow: hidden;
-    position: relative;
-    box-shadow: 0 20px 35px rgba(0,0,0,0.08);
-}
-        .hero-visual img {
+    box-shadow: 0 20px 35px rgba(0,0,0,0.18);
     width: 100%;
-    height: 100%;
-    object-fit: cover;  /* riempie senza deformare */
+    height: 100vh;          /* foto alta quanto lo schermo */
 }
 
+/* immagine più grande, centrata sul trancio */
+.hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* riempie il box senza deformare */
+    object-position: center center;
+}
+
+/* testo sopra l’immagine */
 .hero-text-overlay {
     position: absolute;
     top: 12%;
@@ -409,35 +414,40 @@
     color: #ffffff;
     text-shadow: 0 3px 8px rgba(0,0,0,0.6);
     font-family: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    max-width: 60%;
 }
 
 .hero-text-overlay p {
     font-weight: 800;
-    font-size: clamp(2.2rem, 4vw, 3rem);
-    line-height: 1.05;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    line-height: 1.02;
     margin-bottom: 1rem;
 }
+
 .hero-text-overlay small {
     display: block;
     font-weight: 800;
-    font-size: 1.2rem;   /* più grande di prima */
-    margin-bottom: 1.6rem;
+    font-size: 1.3rem;
+    line-height: 1.1;
+    margin-bottom: 1.8rem;
 }
+
+/* bottone arancione tipo mockup */
 .hero-order-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
-    padding: 0.8rem 1.8rem;   /* meno alto e meno largo */
+    padding: 0.9rem 2.5rem;
     border-radius: 999px;
     background: #ff4f2c;
     color: #ffffff;
     font-weight: 800;
-    font-size: 0.9rem;        /* testo più piccolo */
-    letter-spacing: 0.08em;
+    font-size: 1rem;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
-    border: 3px solid #ffffff; /* bordo un po’ più sottile */
+    box-shadow: 0 14px 24px rgba(0,0,0,0.35);
+    border: 4px solid #ffffff;
 }
 
 .hero-order-btn:hover {
@@ -446,6 +456,27 @@
 
 .hero-arrow {
     font-size: 1.2rem;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+    .hero-visual {
+        height: 80vh;
+    }
+
+    .hero-text-overlay {
+        top: 14%;
+        left: 6%;
+        max-width: 80%;
+    }
+
+    .hero-text-overlay p {
+        font-size: clamp(2rem, 8vw, 2.6rem);
+    }
+
+    .hero-text-overlay small {
+        font-size: 1.05rem;
+    }
 }
 /* Sezione contatti con sfondo verde TOMATO */
 #contatti {
@@ -557,28 +588,24 @@
 </header>
 
 <main>
-    <!-- HERO -->
-    <section id="storia" class="hero">
-        <div>
-            <section id="storia" class="hero">
+   <!-- HERO -->
+<section id="storia" class="hero">
     <div class="hero-visual">
         <img src="foto-pizza-tomato.jpg" alt="Pizza TOMATO">
 
-        <!-- Testo grande sopra l'immagine -->
         <div class="hero-text-overlay">
             <p>Zero idee<br>per pranzo?<br>…e a cena?</p>
             <small>Noi ne abbiamo mille<br>…e sono già pronte!</small>
 
             <a class="hero-order-btn"
-   href="https://service.web-app.it/pluto_3.0/area_clienti/mobile/smartphonecard2015.9/webapp/webapp.php?area_clienti=tomatopizzaecucina&visione_web=1"
-   target="_blank" rel="noopener">
-    ORDINA SUBITO!
-    <span class="hero-arrow">➜</span>
-     </a>
+               href="https://service.web-app.it/pluto_3.0/area_clienti/mobile/smartphonecard2015.9/webapp/webapp.php?area_clienti=tomatopizzaecucina&visione_web=1"
+               target="_blank" rel="noopener">
+                ORDINA SUBITO!
+                <span class="hero-arrow">➜</span>
+            </a>
         </div>
     </div>
 </section>
-
     <!-- MENU GENERALE -->
     <section id="menu">
         <div class="section-label">MENU</div>
