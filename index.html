@@ -309,32 +309,30 @@
         }
 
         /* RECENSIONI */
-        .reviews-wrapper {
-            margin-top: 2.2rem;
-            background: #fff;
-            border-radius: 22px;
-            padding: 1.8rem 1.8rem 2rem;
-            box-shadow: 0 18px 32px rgba(0,0,0,0.06);
-        }
+  .reviews-wrapper {
+    margin-top: 1.5rem;                /* meno spazio sopra il box bianco */
+    background: #fff;
+    border-radius: 22px;
+    padding: 1.3rem 1.3rem 1.5rem;     /* padding più piccolo */
+    box-shadow: 0 18px 32px rgba(0,0,0,0.06);
+}
 
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
-            gap: 1.8rem;
-            align-items: flex-start;
-        }
+.reviews-placeholder {
+    min-height: 120px;                 /* più basso di prima */
+    border-radius: 16px;
+    background: #f3eadd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+}
 
-        .reviews-placeholder {
-            min-height: 160px;
-            border-radius: 16px;
-            background: #f3eadd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.82rem;
-            text-align: center;
-            padding: 1rem;
-            color: rgba(0,0,0,0.7);
+/* immagine piccola centrata nel riquadro bianco */
+.reviews-photo {
+    max-width: 120px;                  /* dimensione foto */
+    border-radius: 12px;
+    object-fit: cover;
+}
         }
 
         /* FOOTER */
@@ -508,8 +506,8 @@
 #recensioni {
     background: linear-gradient(135deg, #ed8eba 0%, #dd77aa 100%) !important;
     color: white !important;
-    padding: 3rem 2rem !important;
-    margin: 2rem 0 !important;
+    padding: 1.8rem 2rem !important;   /* prima 3rem */
+    margin: 1.5rem 0 !important;       /* meno spazio fuori */
     border-radius: 20px !important;
     box-shadow: 0 15px 35px rgba(237,142,186,0.3) !important;
 }
@@ -660,10 +658,8 @@
                     </p>
                 </div>
                 <div class="reviews-placeholder">
-                    <!-- Qui in futuro incolli il codice del widget Google Reviews -->
-                    Spazio per il widget Google Reviews<br>
-                    (Elfsight, Taggbox, EmbedSocial, ecc.).
-                </div>
+                <img src="recensione-foto.jpg" alt="Recensione cliente" class="reviews-photo">           
+              </div>
             </div>
         </div>
     </section>
