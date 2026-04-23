@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOMATO – Pizza e Cucina</title>
-   <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --tomato-red: #FF4F2C;
@@ -16,7 +18,11 @@
             --text-main: #111111;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -45,49 +51,52 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 1rem;
         }
 
-        /* LOGO TOMATO */
-        .logo-mark {
+        .logo-mark img {
+            height: 70px;
+        }
+
+        /* NAV + SOCIAL */
+        .nav-right {
             display: flex;
             align-items: center;
-            gap: 0.7rem;
+            gap: 1.25rem;
         }
 
-        .logo-icon {
-            width: 100px;
-            height: 100px;
+        .nav-social {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-circle {
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            background: var(--tomato-red);
-            position: relative;
+            background: #fcd2e3;
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .logo-icon::after {
-            content: "";
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border-radius: 999px;
-            background: var(--tomato-green);
-            top: -4px;
-            right: 6px;
-            transform: rotate(-15deg);
+        .social-circle:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.18);
         }
 
-        .logo-text-main {
-            font-weight: 800;
-            letter-spacing: 0.14em;
-            font-size: 0.95rem;
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        .logo-text-sub {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            opacity: 0.8;
-        }
-
-        /* NAV DESKTOP */
         nav ul {
             list-style: none;
             display: flex;
@@ -115,9 +124,7 @@
             transition: width 0.2s ease;
         }
 
-        nav li a:hover::after {
-            width: 100%;
-        }
+        nav li a:hover::after { width: 100%; }
 
         .nav-cta {
             padding: 0.55rem 1.2rem;
@@ -192,16 +199,6 @@
             transform: translateY(-10px) rotate(-45deg);
         }
 
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .nav-menu ul {
-            display: flex;
-        }
-
         /* SEZIONI BASE */
         main { padding-bottom: 3rem; }
 
@@ -230,33 +227,306 @@
             max-width: 36rem;
         }
 
-        /* HERO */
+        /* HERO FULL-WIDTH CON FOTO PIZZA */
         .hero {
-            display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-            gap: 2.6rem;
-            align-items: center;
-            padding-top: 3.7rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem 0;
         }
 
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 4vw, 3rem);
+        .hero-visual {
+            position: relative;
+            border-radius: 26px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.18);
+            width: 100%;
+            height: 100vh;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .hero-text-overlay {
+            position: absolute;
+            top: 25%;
+            left: 10%;
+            transform: translateY(-10%);
+            color: #ffffff;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+            font-family: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            max-width: 60%;
+        }
+
+        .hero-text-overlay p {
+            font-weight: 800;
+            font-size: clamp(3rem, 6vw, 4rem);
+            line-height: 1.02;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text-overlay small {
+            display: block;
+            font-weight: 800;
+            font-size: 1.6rem;
             line-height: 1.1;
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.8rem;
         }
 
-        .hero-title span { color: var(--tomato-red); }
+        .hero-order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.9rem 2.5rem;
+            border-radius: 999px;
+            background: #ff4f2c;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            box-shadow: 0 14px 24px rgba(0,0,0,0.35);
+            border: 4px solid #ffffff;
+        }
 
-        .hero-subtitle { font-size: 0.98rem; margin-bottom: 1.7rem; }
+        .hero-order-btn:hover { background: #e63f1f; }
 
-        .hero-cta-row {
+        .hero-arrow { font-size: 1.2rem; }
+
+        /* SEZIONE STORIA (RIUSO #menu MA È STORIA) */
+        #menu {
+            background: linear-gradient(135deg, #6a77b8 0%, #5a67d8 100%) !important;
+            color: white !important;
+            padding: 3rem 2rem !important;
+            margin: 2rem 0 !important;
+            border-radius: 20px !important;
+            box-shadow: 0 15px 35px rgba(106,119,184,0.3) !important;
+        }
+
+        #menu .section-label,
+        #menu h2,
+        #menu .body-copy,
+        #menu .menu-block-title {
+            color: white !important;
+        }
+
+        #menu .menu-columns {
+            background: rgba(255,255,255,0.1) !important;
+            padding: 1.5rem !important;
+            border-radius: 12px !important;
+        }
+
+        .menu-columns {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
+            margin-top: 1.8rem;
+            justify-items: center;
+        }
+
+        .menu-columns .menu-desc {
+            text-align: center;
+            max-width: 22rem;
+        }
+
+        /* RECENSIONI */
+        #recensioni {
+            background: linear-gradient(135deg, #ed8eba 0%, #dd77aa 100%) !important;
+            color: white !important;
+            padding: 1.8rem 2rem !important;
+            margin: 1.5rem 0 !important;
+            border-radius: 20px !important;
+            box-shadow: 0 15px 35px rgba(237,142,186,0.3) !important;
+        }
+
+        #recensioni * { color: white !important; }
+
+        #recensioni a { color: #ffffff; }
+
+        .reviews-placeholder {
+            margin-top: 1.5rem;
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.3rem 1.3rem 1.5rem;
+            box-shadow: 0 18px 32px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reviews-photo {
+            max-width: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        /* SEZIONE DOWNLOAD APP */
+        #download-app {
+            background: #006768;
+            margin: 2rem 0;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            color: #ffffff;
+        }
+
+        .download-app-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .download-app-buttons {
+            margin-top: 1.6rem;
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
-            gap: 0.9rem;
+            gap: 0.8rem;
         }
 
+        .download-app-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .download-app-img {
+            max-width: 120px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+        }
+
+        /* SEZIONE MAPS */
+        #maps {
+            background: #c5d984;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .maps-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .maps-photo-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .maps-photo {
+            max-width: 120px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+        }
+
+        #maps .body-copy { margin-bottom: 1.8rem; }
+
+        /* SEZIONE CONTATTACI FINALE */
+        #contattaci-final {
+            background: #FF4F2C;
+            padding: 3rem 2rem;
+            margin: 2rem 0 0;
+            color: #ffffff;
+        }
+
+        .contattaci-final-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .contattaci-final-tag {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contattaci-final-title {
+            font-size: 2.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contattaci-final-phone {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .contattaci-final-phone a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .contattaci-final-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .contattaci-final-whatsapp {
+            background: #ffffff;
+            color: #25D366;
+            border-radius: 999px;
+            padding: 0.8rem 1.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .contattaci-final-whatsapp:hover { background: #f4f4f4; }
+
+        .contattaci-final-logo-wrap {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .contattaci-final-logo-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contattaci-final-logo {
+            max-width: 80px;
+        }
+
+        /* FOOTER */
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 2rem;
+            font-size: 0.78rem;
+            background: #FF4F2C;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        footer span { max-width: 25rem; }
+
+        /* BUTTON BASE */
         .btn-primary {
             padding: 0.75rem 1.6rem;
             border-radius: 999px;
@@ -271,99 +541,15 @@
             box-shadow: 0 12px 25px rgba(233, 79, 53, 0.25);
         }
 
-        .hero-note { font-size: 0.8rem; opacity: 0.8; }
-
-        .hero-visual {
-            border-radius: 26px;
-            overflow: hidden;
-            background: var(--tomato-beige);
-            min-height: 280px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.08);
-        }
-
-        .hero-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-         .hero-text-overlay p {
-           font-size: 2.8rem;
-           line-height: 1.1;
-           text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.55);
-        }
-
-     .hero-text-overlay small {
-         font-size: 1.3rem;
-         line-height: 1.2;
-         text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.55);
-        }
-
-        /* MENU TESTUALE */
-        .menu-columns {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 2rem;
-            margin-top: 1.8rem;
-        }
-
-        .menu-block-title {
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
-
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-
-        /* RECENSIONI */
-  .reviews-wrapper {
-    margin-top: 1.5rem;                /* meno spazio sopra il box bianco */
-    background: #fff;
-    border-radius: 22px;
-    padding: 1.3rem 1.3rem 1.5rem;     /* padding più piccolo */
-    box-shadow: 0 18px 32px rgba(0,0,0,0.06);
-}
-
-.reviews-placeholder {
-    min-height: 120px;
-    border-radius: 16px;
-    background: transparent;   /* niente riquadro colorato */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;                /* opzionale: togli spazio intorno */
-
-}
-
-/* immagine piccola centrata nel riquadro bianco */
-.reviews-photo {
-    max-width: 120px;                  /* dimensione foto */
-    border-radius: 12px;
-    object-fit: cover;
-}
-        }
-
-        /* FOOTER */
-        footer {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2.5rem 1.25rem 2rem;
-            font-size: 0.78rem;
-            color: rgba(0,0,0,0.65);
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-        }
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 3.2rem;
+            .nav-inner {
+                align-items: center;
             }
-            .hero-visual { order: -1; }
+
+            .nav-right {
+                gap: 0.75rem;
+            }
 
             .nav-menu {
                 position: absolute;
@@ -378,521 +564,162 @@
                 display: none;
             }
 
-            .nav-menu.open {
-                display: flex;
-            }
+            .nav-menu.open { display: flex; }
 
-            .nav-menu ul {
+            nav ul {
                 flex-direction: column;
                 gap: 0.75rem;
             }
 
-            .burger {
-                display: flex;
+            .burger { display: flex; }
+
+            .hero-visual { height: 80vh; }
+
+            .hero-text-overlay {
+                top: 57%;
+                left: 53%;
+                transform: translate(-50%, -50%);
+                max-width: 90%;
+                text-align: center;
+            }
+
+            .hero-text-overlay p {
+                font-size: clamp(2.4rem, 8vw, 3rem);
+            }
+
+            .hero-text-overlay small {
+                font-size: 1.3rem;
+            }
+
+            .download-app-inner,
+            .maps-inner,
+            .contattaci-final-inner {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+
+            #download-app,
+            #maps {
+                padding: 2.2rem 1.5rem;
+            }
+
+            .download-app-img,
+            .maps-photo {
+                max-width: 30%;
+            }
+
+            .contattaci-final-logo-wrap {
+                justify-content: center;
             }
         }
-/* HERO FULL-WIDTH CON FOTO PIZZA */
-.hero {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 1.5rem 1.25rem 0;
-}
-
-.hero-visual {
-    position: relative;
-    border-radius: 26px;
-    overflow: hidden;
-    box-shadow: 0 20px 35px rgba(0,0,0,0.18);
-    width: 100%;
-    height: 100vh;          /* foto alta quanto lo schermo */
-}
-
-/* immagine più grande, centrata sul trancio */
-.hero-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;       /* riempie il box senza deformare */
-    object-position: center center;
-}
-
-/* testo sopra l’immagine */
-.hero-text-overlay {
-    position: absolute;
-    top: 25%;      /* più in basso */
-    left: 10%;     /* un filo più verso il centro */
-    transform: translateY(-10%); /* lo centra meglio verticalmente */
-    color: #ffffff;
-    text-shadow: 0 3px 8px rgba(0,0,0,0.6);
-    font-family: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    max-width: 60%;
-}
-
-.hero-text-overlay p {
-    font-weight: 800;
-    font-size: clamp(3rem, 6vw, 4rem);  /* più grande */
-    line-height: 1.02;
-    margin-bottom: 1rem;
-}
-
-.hero-text-overlay small {
-    display: block;
-    font-weight: 800;
-    font-size: 1.6rem;  /* più grande */
-    line-height: 1.1;
-    margin-bottom: 1.8rem;
-}
-
-/* bottone arancione tipo mockup */
-.hero-order-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    padding: 0.9rem 2.5rem;
-    border-radius: 999px;
-    background: #ff4f2c;
-    color: #ffffff;
-    font-weight: 800;
-    font-size: 1rem;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    box-shadow: 0 14px 24px rgba(0,0,0,0.35);
-    border: 4px solid #ffffff;
-}
-
-.hero-order-btn:hover {
-    background: #e63f1f;
-}
-
-.hero-arrow {
-    font-size: 1.2rem;
-}
-
-/* mobile */
-@media (max-width: 900px) {
-    .hero-visual {
-        height: 80vh;
-    }
-
-    .hero-text-overlay {
-        top: 57%;                 /* più in basso */
-        left: 53%;                /* più centrale */
-        transform: translate(-50%, -50%); /* centrato rispetto al punto */
-        max-width: 90%;
-        text-align: center;
-    }
-
-    .hero-text-overlay p {
-        font-size: clamp(2.4rem, 8vw, 3rem);  /* più grande su mobile */
-    }
-
-    .hero-text-overlay small {
-        font-size: 1.3rem;
-    }
-}
-/* Sezione contatti con sfondo verde TOMATO */
-#contatti {
-    background: #006768;
-    color: #ffffff;
-    padding-bottom: 3rem;
-    padding: 3rem 2rem !important;
-    margin: 2rem 0 !important;
-    border-radius: 20px !important;
-    box-shadow: 0 15px 35px rgba(237,142,186,0.3) !important;
-}
-        footer {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2.5rem 1.25rem 2rem;
-    font-size: 0.78rem;
-    background: #FF4F2C;      /* arancione TOMATO */
-    color: #ffffff;           /* testo bianco */
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-}
-        /* SEZIONE DOWNLOAD APP */
-#download-app {
-  background:  #006768;             
-  margin: 2rem 0;
-  padding: 3rem 2rem;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-}
-
-.download-app-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.download-app-buttons {
-  margin-top: 1.6rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.download-app-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.download-app-img {
-  max-width: 120px;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-}
-
-/* mobile */
-@media (max-width: 900px) {
-  #download-app {
-    padding: 2.2rem 1.5rem;
-  }
-
-  .download-app-inner {
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
-  }
-
-  .download-app-img {
-    max-width: 30%;
-  }
-}
-/* SEZIONE MAPS */
-#maps {
-  background: #c5d984;               /* puoi cambiare colore se vuoi */
-  padding: 3rem 2rem;
-  margin: 2rem 0;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-}
-
-.maps-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 4rem;
-  align-items: center;
-}
-
-.maps-photo-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.maps-photo {
-  max-width: 120px;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-}
-        /* Aggiungi o modifica così queste regole */
-
-#maps .body-copy {
-  margin-bottom: 1.8rem;   /* spazio sotto il testo */
-}
-
-.maps-btn {
-  display: inline-block;
-  margin-top: 0;           /* qui puoi anche lasciare 0 */
-}
-
-/* mobile */
-@media (max-width: 900px) {
-  #maps {
-    padding: 2.2rem 1.5rem;
-  }
-
-  .maps-inner {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .maps-photo {
-    max-width: 30%;
-  }
-
-/* RECENSIONI - stessa forma del menu */
-#recensioni {
-    background: linear-gradient(135deg, #ed8eba 0%, #dd77aa 100%) !important;
-    color: white !important;
-    padding: 1.8rem 2rem !important;   /* prima 3rem */
-    margin: 1.5rem 0 !important;       /* meno spazio fuori */
-    border-radius: 20px !important;
-    box-shadow: 0 15px 35px rgba(237,142,186,0.3) !important;
-}
-
-#recensioni * {
-    color: white !important;
-}
-
-#recensioni a {
-    color: #ffffff;
-}
-/* SEZIONE MENU COMPLETA #6a77b8 */
-#menu {
-    background: linear-gradient(135deg, #6a77b8 0%, #5a67d8 100%) !important;
-    color: white !important;
-    padding: 3rem 2rem !important;
-    margin: 2rem 0 !important;
-    border-radius: 20px !important;
-    box-shadow: 0 15px 35px rgba(106,119,184,0.3) !important;
-}
-
-#menu .section-label,
-#menu h2, 
-#menu .body-copy,
-#menu .menu-block-title {
-    color: white !important;
-}
-
-#menu .menu-columns {
-    background: rgba(255,255,255,0.1) !important;
-    padding: 1.5rem !important;
-    border-radius: 12px !important;
-}
-.nav-social {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-left: 1rem;
-}
-
-.social-circle {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #fcd2e3;        /* rosa chiaro */
-  color: #ffffff;
-  font-size: 0.8rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.social-circle:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
-}
-    /* SEZIONE CONTATTACI FINALE */
-#contattaci-final {
-  background: #FF4F2C;            /* arancione */
-  padding: 3rem 2rem;
-  margin: 2rem 0 0;
-}
-
-.contattaci-final-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  gap: 2rem;
-  align-items: center;
-  color: #ffffff;
-}
-
-.contattaci-final-tag {
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.8rem;
-  margin-bottom: 0.8rem;
-  color: #ffffff;
-}
-
-.contattaci-final-title {
-  font-size: 2.1rem;
-  margin-bottom: 1rem;
-  color: #ffffff;
-}
-
-.contattaci-final-phone {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-}
-
-.contattaci-final-phone a {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-.contattaci-final-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-/* bottone WhatsApp, mantiene stile btn-primary ma su sfondo bianco */
-.contattaci-final-whatsapp {
-  background: #ffffff;
-  color: #25D366;                     /* verde WhatsApp */
-  border-radius: 999px;
-  padding: 0.8rem 1.9rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.contattaci-final-whatsapp:hover {
-  background: #f4f4f4;
-}
-
-/* riquadro bianco con logo */
-.contattaci-final-logo-wrap {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.contattaci-final-logo-card {
-  background: #ffffff;               /* sotto sfondo bianco */
-  border-radius: 20px;
-  padding: 1.5rem 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contattaci-final-logo {
-  max-width: 80px;
-}
-
-@media (max-width: 900px) {
-  .contattaci-final-inner {
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
-  }
-
-  .contattaci-final-logo-wrap {
-    justify-content: center;   /* centra il logo in basso */
-  }
-    
-}
-/* sempre centrato */
-.menu-columns .menu-desc {
-  text-align: center;
-}
-/* solo mobile */
-@media (max-width: 900px) {
-  .menu-columns {
-    display: flex;
-    justify-content: center;
-  }
-
-  .menu-columns .menu-desc {
-    text-align: center;
-    max-width: 22rem;
-    margin: 0 auto;
-  }
-
-}
-
     </style>
 </head>
 <body>
+
 <header>
-   <header>
-     <div class="nav-inner">
-  <div class="logo-mark">
-    <img src="https://raw.githubusercontent.com/gastronomiapizzeriaduomo-source/tomato-pizza-cucina/main/tomato-logo-bianco.jpg"
-         alt="Tomato Pizza e Cucina"
-         style="height:70px;">
-  </div>
-
-  <!-- icone social -->
-  <div class="nav-social">
-    <a href="https://www.facebook.com/share/18PEW7Dw2S/?mibextid=wwXIfr"
-       target="_blank" rel="noopener"
-       class="social-circle social-fb">
-      f
-    </a>
-
-    <a href="https://www.instagram.com/tomatopizzaecucina?igsh=eGs2MXljcjF0YWVm"
-       target="_blank" rel="noopener"
-       class="social-circle social-ig">
-      in
-    </a>
-  </div>
-
-        <!-- Menu + Burger -->
-        <div class="nav-menu" id="navMenu">
-            <nav>
-                <ul>
-                    <li><a href="#storia">Storia</a></li>
-
-                    <li class="has-dropdown">
-                        <a href="#menu">Menu</a>
-                        <ul class="dropdown">
-                            <li><a href="#menu">Pizza</a></li>
-                            <li><a href="#menu">Cucina</a></li>
-                            <li><a href="#menu">Dolci</a></li>
-                            <li><a href="#menu">Bevande</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="#recensioni">Recensioni</a></li>
-                    <li>
-                    <a href="https://service.web-app.it/pluto_3.0/area_clienti/mobile/smartphonecard2015.9/webapp/webapp.php?area_clienti=tomatopizzaecucina&visione_web=1"
-                    class="nav-cta"
-                    target="_blank" rel="noopener">
-                    Prenota / Ordina
-                   </a>
-                 </li>
-                </ul>
-            </nav>
+    <div class="nav-inner">
+        <div class="logo-mark">
+            <img src="tomato-logo-bianco.jpg"
+                 alt="Tomato Pizza e Cucina">
         </div>
 
-        <!-- Icona hamburger per mobile -->
-        <div class="burger" id="burger">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="nav-right">
+            <!-- icone social -->
+            <div class="nav-social">
+                <a href="https://www.facebook.com/share/18PEW7Dw2S/?mibextid=wwXIfr"
+                   target="_blank" rel="noopener"
+                   class="social-circle social-fb">
+                    f
+                </a>
+
+                <a href="https://www.instagram.com/tomatopizzaecucina?igsh=eGs2MXljcjF0YWVm"
+                   target="_blank" rel="noopener"
+                   class="social-circle social-ig">
+                    in
+                </a>
+            </div>
+
+            <!-- Menu + Burger -->
+            <div class="nav-menu" id="navMenu">
+                <nav>
+                    <ul>
+                        <li><a href="#storia">Storia</a></li>
+
+                        <li class="has-dropdown">
+                            <a href="#menu">Menu</a>
+                            <ul class="dropdown">
+                                <li><a href="#menu">Pizza</a></li>
+                                <li><a href="#menu">Cucina</a></li>
+                                <li><a href="#menu">Dolci</a></li>
+                                <li><a href="#menu">Bevande</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="#recensioni">Recensioni</a></li>
+                        <li>
+                            <a href="https://service.web-app.it/pluto_3.0/area_clienti/mobile/smartphonecard2015.9/webapp/webapp.php?area_clienti=tomatopizzaecucina&visione_web=1"
+                               class="nav-cta"
+                               target="_blank" rel="noopener">
+                                Prenota / Ordina
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Icona hamburger per mobile -->
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </div>
-</header>
-
 </header>
 
 <main>
-   <!-- HERO -->
-<section id="storia" class="hero">
-    <div class="hero-visual">
-        <img src="foto-pizza-tomato.jpg" alt="Pizza TOMATO">
+    <!-- HERO -->
+    <section id="storia" class="hero">
+        <div class="hero-visual">
+            <img src="foto-pizza-tomato.jpg" alt="Pizza TOMATO">
 
-        <div class="hero-text-overlay">
-            <p>Zero idee<br>per pranzo?<br>…e a cena?</p>
-            <small>Noi ne abbiamo mille<br>…e sono già pronte!</small>
+            <div class="hero-text-overlay">
+                <p>Zero idee<br>per pranzo?<br>…e a cena?</p>
+                <small>Noi ne abbiamo mille<br>…e sono già pronte!</small>
 
-            <a class="hero-order-btn"
-               href="https://service.web-app.it/pluto_3.0/area_clienti/mobile/smartphonecard2015.9/webapp/webapp.php?area_clienti=tomatopizzaecucina&visione_web=1"
-               target="_blank" rel="noopener">
-                ORDINA SUBITO!
-                <span class="hero-arrow">➜</span>
-            </a>
+                <a class="hero-order-btn"
+                   href="https://service.web-app.it/pluto_3.0/area_clienti/mobile/smartphonecard2015.9/webapp/webapp.php?area_clienti=tomatopizzaecucina&visione_web=1"
+                   target="_blank" rel="noopener">
+                    ORDINA SUBITO!
+                    <span class="hero-arrow">➜</span>
+                </a>
+            </div>
         </div>
-    </div>
-</section>
-    <!-- La nostra storia -->
+    </section>
+
+    <!-- STORIA -->
     <section id="menu">
-       <h2 class="section-title">LA NOSTRA STORIA</h2></div>
+        <div class="section-label">LA NOSTRA STORIA</div>
+        <h2 class="section-title">La nostra storia</h2>
+
         <p class="body-copy">
-           </p>
-        Nel 2010 Davide e Alessia decidono di trasformare la loro esperienza in cucina in un progetto tutto loro: una pizzeria–cucina nel cuore di Montecchio Maggiore. Dopo oltre vent’anni passati nella ristorazione, portano nel locale tutto quello che hanno imparato: attenzione ai dettagli, rispetto delle ricette tradizionali e voglia di sperimentare.
-     Negli anni il menu cresce con loro: alle pizze classiche si affiancano impasti integrali e proposte gourmet, sempre preparate con ingredienti selezionati e materie prime di alta qualità. Oggi TOMATO è diventato un punto di riferimento per chi, a Montecchio, cerca una pizza curata in ogni particolare e una cucina che sa unire comfort food e creatività, da gustare in locale o da asporto.
-          <div class="menu-columns">
-         <p class="menu-desc">
-         Lavoriamo ogni giorno per portarvi a tavola la migliore qualità, dal primo impasto all’ultimo ingrediente..
+            Nel 2010 Davide e Alessia decidono di trasformare la loro esperienza in cucina in un progetto tutto loro:
+            una pizzeria–cucina nel cuore di Montecchio Maggiore. Dopo oltre vent’anni passati nella ristorazione,
+            portano nel locale tutto quello che hanno imparato: attenzione ai dettagli, rispetto delle ricette
+            tradizionali e voglia di sperimentare.
         </p>
-        </div>
+        <p class="body-copy" style="margin-top:0.8rem;">
+            Negli anni il menu cresce con loro: alle pizze classiche si affiancano impasti integrali e proposte
+            gourmet, sempre preparate con ingredienti selezionati e materie prime di alta qualità. Oggi TOMATO
+            è diventato un punto di riferimento per chi, a Montecchio, cerca una pizza curata in ogni particolare
+            e una cucina che sa unire comfort food e creatività, da gustare in locale o da asporto.
+        </p>
+
+        <div class="menu-columns">
+            <p class="menu-desc">
+                Lavoriamo ogni giorno per portarvi a tavola la migliore qualità,
+                dal primo impasto all’ultimo ingrediente.
+            </p>
         </div>
     </section>
 
@@ -906,119 +733,114 @@
                 Lascia una recensione su Google
             </button>
         </a>
-                    <p class="body-copy">
-                        Le parole più importanti sono le vostre: chi parla dell’impasto leggero,
-                        chi del profumo appena si entra da noi...
-                    </p>
-                    <p class="body-copy" style="margin-top:0.8rem;">
-                    Lacia la tua recensione qui.
-                    </p>
-                </div>
-            <div class="reviews-placeholder">
-    <img src="recensioni-foto.jpg"
-         alt="Recensione cliente"
-         class="reviews-photo">
-</div>
 
+        <p class="body-copy" style="margin-top:1rem;">
+            Le parole più importanti sono le vostre: chi parla dell’impasto leggero,
+            chi del profumo appena si entra da noi...
+        </p>
+        <p class="body-copy" style="margin-top:0.8rem;">
+            Lascia la tua recensione qui.
+        </p>
+
+        <div class="reviews-placeholder">
+            <img src="recensioni-foto.jpg"
+                 alt="Recensione cliente"
+                 class="reviews-photo">
+        </div>
+    </section>
+
+    <!-- DOWNLOAD APP -->
+    <section id="download-app">
+        <div class="download-app-inner">
+            <div class="download-app-text">
+                <div class="section-label">APP TOMATO</div>
+                <h2 class="section-title">Scarica TOMATO App.</h2>
+                <p class="body-copy">
+                    Ordina le tue pizze e i piatti di cucina direttamente dall’app,
+                    salva i tuoi preferiti e riordina in pochi tap.
+                </p>
+
+                <div class="download-app-buttons">
+                    <a class="btn-primary"
+                       href="https://url.velocissimo.app/o/155"
+                       target="_blank" rel="noopener">
+                        Scarica l'app
+                    </a>
+                </div>
+            </div>
+
+            <div class="download-app-image">
+                <img src="tomato-app.jpg"
+                     alt="Schermata TOMATO App"
+                     class="download-app-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- MAPS -->
+    <section id="maps">
+        <div class="maps-inner">
+            <div>
+                <div class="section-label">DOVE SIAMO</div>
+                <h2 class="section-title">TOMATO su Google Maps.</h2>
+                <p class="body-copy">
+                    Vuoi raggiungerci al volo? Apri la posizione su Maps
+                    e imposta il percorso in un tap.
+                </p>
+
+                <a class="btn-primary maps-btn"
+                   href="https://maps.app.goo.gl/wxUN6XieS34uStz46?g_st=ic"
+                   target="_blank" rel="noopener">
+                    Apri su Google Maps
+                </a>
+            </div>
+
+            <div class="maps-photo-wrap">
+                <img src="mapsfoto.jpg"
+                     alt="Mappa TOMATO"
+                     class="maps-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATTACI -->
+    <section id="contattaci-final">
+        <div class="contattaci-final-inner">
+            <div class="contattaci-final-text">
+                <div class="contattaci-final-tag">
+                    PIZZA • CUCINA • TAKE AWAY
+                </div>
+
+                <h2 class="contattaci-final-title">
+                    Contattaci.
+                </h2>
+
+                <p class="contattaci-final-phone">
+                    Telefono:
+                    <a href="tel:0444493228">0444 493228</a>
+                </p>
+
+                <div class="contattaci-final-actions">
+                    <a class="btn-primary contattaci-final-whatsapp"
+                       href="https://wa.me/390444493228"
+                       target="_blank" rel="noopener">
+                        Contattaci su WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="contattaci-final-logo-wrap">
+                <div class="contattaci-final-logo-card">
+                    <img src="tomato-logo-bianco.jpg"
+                         alt="Tomato Pizza e Cucina"
+                         class="contattaci-final-logo">
                 </div>
             </div>
         </div>
     </section>
-    
-    <section id="download-app">
-  <div class="download-app-inner">
-
-    <div class="download-app-text">
-      <div class="section-label">APP TOMATO</div>
-      <h2 class="section-title">Scarica TOMATO App.</h2>
-      <p class="body-copy">
-        Ordina le tue pizze e i piatti di cucina direttamente dall’app,
-        salva i tuoi preferiti e riodina in pochi tap.
-      </p>
-
-      <div class="download-app-buttons">
-        <a class="btn-primary"
-           href="https://url.velocissimo.app/o/155"
-           target="_blank" rel="noopener">
-          Scarica l'app
-        </a>
-      </div>
-    </div>
-
-    <div class="download-app-image">
-      <img src="tomato-app.jpg"
-           alt="Schermata TOMATO App"
-           class="download-app-img">
-    </div>
-
-  </div>
-</section>
-    <section id="maps">
-  <div class="maps-inner">
-
-    <div>
-      <div class="section-label">DOVE SIAMO</div>
-      <h2 class="section-title">TOMATO su Google Maps.</h2>
-      <p class="body-copy">
-        Vuoi raggiungerci al volo? Apri la posizione su Maps
-        e imposta il percorso in un tap.
-      </p>
-
-      <a class="btn-primary maps-btn"
-         href="https://maps.app.goo.gl/wxUN6XieS34uStz46?g_st=ic"
-         target="_blank" rel="noopener">
-        Apri su Google Maps
-      </a>
-    </div>
-
-    <div class="maps-photo-wrap">
-      <img src="mapsfoto.jpg"
-           alt="Mappa TOMATO"
-           class="maps-photo">
-    </div>
-
-  </div>
-</section>
-<section id="contattaci-final">
-  <div class="contattaci-final-inner">
-
-    <div class="contattaci-final-text">
-      <div class="contattaci-final-tag">
-        PIZZA • CUCINA • TAKE AWAY
-      </div>
-
-      <h2 class="contattaci-final-title">
-        Contattaci.
-      </h2>
-
-      <p class="contattaci-final-phone">
-        Telefono:
-        <a href="tel:0444493228">0444 493228</a>
-      </p>
-
-      <div class="contattaci-final-actions">
-        <a class="btn-primary contattaci-final-whatsapp"
-           href="https://wa.me/390444493228"
-           target="_blank" rel="noopener">
-          Contattaci su WhatsApp
-        </a>
-      </div>
-    </div>
-
-    <div class="contattaci-final-logo-wrap">
-      <div class="contattaci-final-logo-card">
-        <img src="tomato-logo-bianco.jpg"
-             alt="Tomato Pizza e Cucina"
-             class="contattaci-final-logo">
-      </div>
-    </div>
-
-  </div>
-</section>
-
-    
 </main>
-</div>
+
+<footer>
     <span>&copy; 2026 TOMATO – Pizza &amp; Cucina. Tutti i diritti riservati.</span>
     <span>Identità ispirata al manuale di brand TOMATO.</span>
 </footer>
@@ -1028,10 +850,12 @@
     const burger = document.getElementById('burger');
     const navMenu = document.getElementById('navMenu');
 
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('active');
-        navMenu.classList.toggle('open');
-    });
+    if (burger && navMenu) {
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            navMenu.classList.toggle('open');
+        });
+    }
 </script>
 
 </body>
