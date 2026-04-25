@@ -19,7 +19,9 @@
             --social-pink: #f3a6c5;
             --social-pink-hover: #ec8fb7;
         }
-
+html {
+    scroll-padding-top: 90px;
+}
         * {
             margin: 0;
             padding: 0;
@@ -330,41 +332,40 @@
             font-size: 1.2rem;
         }
 
-        /* STORIA */
-        #menu {
-            background: linear-gradient(135deg, #6a77b8 0%, #5a67d8 100%) !important;
-            color: white !important;
-            padding: 3rem 2rem !important;
-            margin: 2rem 0 !important;
-            border-radius: 20px !important;
-            box-shadow: 0 15px 35px rgba(106,119,184,0.3) !important;
-        }
+     /* STORIA (sezione viola) */
+#storia-sezione {
+    background: linear-gradient(135deg, #6a77b8 0%, #5a67d8 100%);
+    color: white;
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(106,119,184,0.3);
+}
 
-        #menu .section-label,
-        #menu h2,
-        #menu .body-copy,
-        #menu .menu-block-title {
-            color: white !important;
-        }
+#storia-sezione .section-label,
+#storia-sezione h2,
+#storia-sezione .body-copy {
+    color: white;
+}
 
-        #menu .menu-columns {
-            background: rgba(255,255,255,0.1) !important;
-            padding: 1.5rem !important;
-            border-radius: 12px !important;
-        }
+#storia-sezione .menu-columns {
+    background: rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
 
-        .menu-columns {
-            display: grid;
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-            gap: 2rem;
-            margin-top: 1.8rem;
-            justify-items: center;
-        }
+.menu-columns {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2rem;
+    margin-top: 1.8rem;
+    justify-items: center;
+}
 
-        .menu-columns .menu-desc {
-            text-align: center;
-            max-width: 22rem;
-        }
+.menu-columns .menu-desc {
+    text-align: center;
+    max-width: 22rem;
+}
 
         /* RECENSIONI */
         #recensioni {
@@ -588,116 +589,123 @@
         }
 
         /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .nav-inner {
-                align-items: center;
-            }
+@media (max-width: 900px) {
+    .nav-inner {
+        align-items: center;
+    }
 
-            .nav-right {
-                gap: 0.75rem;
-            }
+    .nav-right {
+        gap: 0.75rem;
+    }
 
-            .nav-social {
-                gap: 0.45rem;
-            }
+    .nav-social {
+        gap: 0.45rem;
+    }
 
-            .social-circle {
-                width: 30px;
-                height: 30px;
-            }
+    .social-circle {
+        width: 30px;
+        height: 30px;
+    }
 
-            .social-circle i {
-                font-size: 0.85rem;
-            }
+    .social-circle i {
+        font-size: 0.85rem;
+    }
 
-            .nav-menu {
-                position: absolute;
-                top: 82px;
-                left: 0;
-                right: 0;
-                background: #f3eadd;
-                padding: 0.75rem 1.25rem 1rem;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
-                display: none;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-            }
+    .nav-menu {
+        position: absolute;
+        top: 82px;
+        left: 0;
+        right: 0;
+        background: #f3eadd;
+        padding: 0.75rem 1.25rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        display: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
 
-            .nav-menu.open {
-                display: flex;
-            }
+    .nav-menu.open {
+        display: flex;
+    }
 
-            nav ul {
-                flex-direction: column;
-                gap: 0.75rem;
-                align-items: flex-start;
-            }
+    nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+    }
 
-            .dropdown {
-                position: static;
-                opacity: 1;
-                pointer-events: auto;
-                transform: none;
-                box-shadow: none;
-                background: transparent;
-                padding: 0.35rem 0 0 0.75rem;
-                min-width: auto;
-            }
+    /* dropdown CHIUSO di default su mobile */
+    .dropdown {
+        position: static;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(4px);
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+        min-width: auto;
+    }
 
-            .dropdown a {
-                padding: 0.35rem 0;
-            }
+    /* dropdown VISIBILE solo quando .has-dropdown ha la classe .open */
+    .has-dropdown.open .dropdown {
+        opacity: 1;
+        pointer-events: auto;
+    }
 
-            .burger {
-                display: flex;
-            }
+    .dropdown a {
+        padding: 0.35rem 0;
+    }
 
-            .hero-visual {
-                height: 80vh;
-            }
+    .burger {
+        display: flex;
+    }
 
-            .hero-text-overlay {
-                top: 57%;
-                left: 53%;
-                transform: translate(-50%, -50%);
-                max-width: 90%;
-                text-align: center;
-            }
+    .hero-visual {
+        height: 80vh;
+    }
 
-            .hero-text-overlay p {
-                font-size: clamp(2.4rem, 8vw, 3rem);
-            }
+    .hero-text-overlay {
+        top: 57%;
+        left: 53%;
+        transform: translate(-50%, -50%);
+        max-width: 90%;
+        text-align: center;
+    }
 
-            .hero-text-overlay small {
-                font-size: 1.3rem;
-            }
+    .hero-text-overlay p {
+        font-size: clamp(2.4rem, 8vw, 3rem);
+    }
 
-            .download-app-inner,
-            .maps-inner,
-            .contattaci-final-inner {
-                grid-template-columns: 1fr;
-                gap: 1.8rem;
-            }
+    .hero-text-overlay small {
+        font-size: 1.3rem;
+    }
 
-            #download-app,
-            #maps {
-                padding: 2.2rem 1.5rem;
-            }
+    .download-app-inner,
+    .maps-inner,
+    .contattaci-final-inner {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
 
-            .download-app-img,
-            .maps-photo {
-                max-width: 30%;
-            }
+    #download-app,
+    #maps {
+        padding: 2.2rem 1.5rem;
+    }
 
-            .contattaci-final-logo-wrap {
-                justify-content: center;
-            }
+    .download-app-img,
+    .maps-photo {
+        max-width: 30%;
+    }
 
-            footer {
-                flex-direction: column;
-            }
-        }
+    .contattaci-final-logo-wrap {
+        justify-content: center;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
     </style>
 </head>
 <body>
